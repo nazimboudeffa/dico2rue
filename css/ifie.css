@@ -1,0 +1,14 @@
+@charset "UTF-8";
+/* CSS Document */
+
+
+
+#alphabet{ float:left; width:100%; border: 2px dashed #0071BB; overflow:hidden; -moz-border-radius: 10px;  -webkit-border-radius: 10px; -khtml-border-radius: 10px;  border-radius: 10px; }
+#alphabet_row{ position:relative; float: left; }
+ul#alphabet_row li{ list-style:none; float:left; margin:0px 1px; }
+ul#alphabet_row  li input{ text-align:center; background:none; border:none; padding:3px 13px 3px 13px;; cursor:pointer; font-size:18px; color:#0071BB;position: relative;  z-index: 2;  font-family: 'Covered By Your Grace', Arial, serif; }
+ul#alphabet_row  li input:hover, .alphabet_row_active{ color:#FFF !important; }
+
+
+#blob{ background-color:#0071BB; position:absolute; z-index: 1;  -moz-border-radius: 10px;  -webkit-border-radius: 10px; -khtml-border-radius: 10px;  border-radius: 10px; padding-bottom:10px; }
+
