@@ -1,34 +1,7 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Mots du jour du dictionnaire d&prime;argot | Dico 2 Rue </title><meta content="D&eacute;couvrez  le mot du jour... Dico 2 Rue est le dictionnaire collaboratif de l&prime;argot.  A vous de voter et cr&eacute;er les mots et expressions ainsi que les d&eacute;finitions de ce dico fran&ccedil;ais moderne." name="description" /><meta content="mots du jour, dictionnaire, d&eacute;finition, dico fran&ccedil;ais, argot, expression, dictionnaire fran&ccedil;ais, synonymes, d&eacute;finir, verlan, " name="keywords" /><meta name="robots" content="index, follow" />
-<meta http-equiv="Content-Language" content="fr"/>
-<link rel="shortcut icon" href="img/favicon.ico" />
-<!-- FOR og tags  -->
-<meta property="og:country-name" content="FR"/>
-<!-- FOR FB to know  -->
-<meta property="og:title" content="Dico 2 Rue"/>
-<meta property="og:type" content="article"/>
-<meta property="og:url" content="http://www.dico2rue.com//"/>
-<meta property="og:site_name" content="Dico 2 Rue"/>
-<meta property="og:image" content="img/dico2rue.jpg"/>
-<!-- GOOGLE FOTNS  -->
-<link href="http://fonts.googleapis.com/css?family=Anton:regular&v1" rel="stylesheet" type="text/css">
-<link href="css/general.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="js/jquery144.js"></script>
-<!-- MENUBAR -->
-<script type="text/javascript" src="js/lavalamp-1-3-3/lib/jquery.easing.1.3.js"></script>
-<script type="text/javascript" src="js/menuslide/js/jquery.spasticNav.js"></script>
-<!-- Validator -->
-<link rel="stylesheet" href="js/validator/css/validationEngine.jquery.css" type="text/css"/>
-<script src="js/validator/js/jquery.validationEngine-fr.js" type="text/javascript" charset="utf-8"></script>
-<script src="js/validator/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
-<!--[if IE ]>
-        <link rel="stylesheet" type="text/css" href="css/ifie.css" />
-<![endif]-->
-<!--FOR SHARE THIS-->
+<head>
+<?php include 'includes/head.php' ?>
 <script type="text/javascript">var switchTo5x=true;</script><script type="text/javascript" src="button/buttons.js"></script><script type="text/javascript">stLight.options({publisher:'2595df41-8938-4ada-bb4c-fe56f89fafe9',onhover: false,theme:'3'});</script>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -150,9 +123,9 @@ $.ajax({
 </script>
 </head>
 <body>
-<div style="background: yellow; color: #000; padding: 20px; text-align: center;">
+<div style="background: green; color: #fff; padding: 20px; text-align: center;">
 <p>
-Bonjour. Nous sommes désolés de vous annoncer que Dico2Rue sera déconnecté indéfiniment le 31 novembre 2018. Nous n'avons malheureusement plus le temps de gérer ce site.
+Bonjour. Nous sommes content de vous annoncer que <u>Dico2Rue sera reconnecté dès aujourd'hui</u>. Nous n'avons que ça à faire et nous avons tout le temps de gérer ce site.
 </p>
 </div>
 <div id="wrapper">
