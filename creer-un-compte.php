@@ -50,7 +50,7 @@ $('#forgotten').click(function(){
 	      }
      },
      error:function(data){
-     	alert("Il y a une erreur.  Priez reloader la page.");
+     	//alert("Il y a une erreur.  Priez reloader la page.");
      }
 	});
 	return false;
@@ -63,9 +63,13 @@ $('#forgotten').click(function(){
 		values = new Array();
 		values['remail'] = $('#remail').val();
 		values['rusername'] = $('#rusername').val();
+    values['rpassword'] = $('#rpassword').val();
+    values['rcpassword'] = $('#rcpassword').val();
 		values['agree'] = $('#agree').attr('checked');
 		if(values['rusername'] == ''){  $('#update').html("Il manque un pseudo");$('#update').fadeIn('fast');updatefadeout(); return false; }
 		if(values['remail'] == ''){  $('#update').html("Il manque un email");$('#update').fadeIn('fast');updatefadeout(); return false; }
+    if(values['rpassword'] == ''){  $('#update').html("Il manque un mot de passe");$('#update').fadeIn('fast');updatefadeout(); return false; }
+    if(values['rpassword'] != values['rcpassword']){  $('#update').html("Les deux mots de passe doivent être identiques");$('#update').fadeIn('fast');updatefadeout(); return false; }
 		if(values['agree'] == false){  $('#update').html("Merci d'accepter les conditions d'utilisation pour créer votre compte");$('#update').fadeIn('fast');updatefadeout(); return false; }
 	var checkeremail = $("#remail").validationEngine('validateField', "#remail");
 	if( checkeremail === true ){
@@ -82,7 +86,7 @@ $('#forgotten').click(function(){
 $.ajax({
 	type: 'POST',
 	url: 'classes/actions.php',
-	data: { 'action' : 'check' , 'email' : values['remail'] , 'username' : values['rusername'] },
+	data: { 'action' : 'check' , 'email' : values['remail'] , 'username' : values['rusername'], 'password' : values['rpassword'] },
 	dataType : 'json',
 	beforeSend:function(){
 		$('#update').html("Vérification de la disponibilité de votre Pseudo et email.");
@@ -97,13 +101,14 @@ $.ajax({
 			$.ajax({
 				type: 'POST',
 				url: 'classes/actions.php',
-				data: { 'action' : 'register' , 'remail' : values['remail'] , 'rusername' : values['rusername']   },
+				data: { 'action' : 'register' , 'remail' : values['remail'] , 'rusername' : values['rusername'], 'rpassword' : values['rpassword']   },
 				dataType : 'json',
 				beforeSend:function(){
 					$('#update').html("Enregistrement de vos information");
 					$('#update').fadeIn('fast');
 				},
 				success:function(data){
+
 					if( data.error === false){
 						$('#update').html("Vous êtes maintenant connecté");
 						updatefadeout();
@@ -119,7 +124,7 @@ $.ajax({
 					}
 				},
 				error:function(data){
-					alert("Il y a une erreur.  Priez reloader la page.");
+					//alert("Il y a une erreur.  Priez reloader la page.");
 				}
 			});
 			///////////////////////////////////////
@@ -216,12 +221,12 @@ $.ajax({
 	<label>Votre email :</label>
 	<input type="text" name="remail" id="remail" class="validate[required,custom[email]]" value="" tabindex="12" />
 	<p class="moveup"><span>Utilisez une vraie adresse Email !</span><br />Votre mot de passe vous sera envoyé, vous permettant ensuite de voir vos mots et gérer votre profil.</p><br />
-<!--
+
 	<label>Mot de passe :</label>
 	<input type="password" name="rpassword" id="rpassword" class="validate[minSize[6],maxSize[15]]" tabindex="13" />
 	<label>Confirmer mot de passe :</label>
 	<input type="password" name="rcpassword" id="rcpassword" class="validate[minSize[6],maxSize[15]]" tabindex="14"  />
--->
+
 	<input type="checkbox" name="agree" id="agree" class="validate[required]" style="width:30px;" tabindex="15" /> J'accepte les <a href="index.html" target="_blank">conditions d'utilisation</a> du site.
 	<button type="submit" class="buttons right"  name="function" id="register" value="register" tabindex="16">Valider</button>
 </form>

@@ -1,9 +1,6 @@
 <?php
 
 session_start();
-if (!isset($global['systemRootPath'])) {
-    require_once '../config/config.php';
-};
 include '../config/connect.php';
 
 $action = filter_var(htmlentities($_POST['action']),FILTER_SANITIZE_STRING);
@@ -11,31 +8,87 @@ $action = filter_var(htmlentities($_POST['action']),FILTER_SANITIZE_STRING);
 switch ($action) {
 //
   case 'login_forgotten' :
+
+    $forgotten_email = filter_var(htmlentities($_POST['email']),FILTER_SANITIZE_STRING);
+    $eemsql = "SELECT * FROM comptes WHERE email=:forgotten_email";
+    $exist_email = $conn->prepare($eemsql);
+    $exist_email->bindParam(':forgotten_email', $forgotten_email, PDO::PARAM_STR);
+    $exist_email->execute();
+
+    $error = false;
+
+    $num_em_ex = $exist_email->rowCount();
+    if ($num_em_ex == 0){
+      $error = true;
+    }else{
+      //SEND EMAIL WITH NEW PASSWORD
+    }
+
     $array = array(
-      'error'=>true
+      'error'=>$error
     );
     $json = json_encode($array);
     echo $json;
+
   break;
 //
   case 'check' :
-    //echo $_POST['email'];
-    //echo $_POST['username'];
+
+    $signup_username = filter_var(htmlentities($_POST['username']),FILTER_SANITIZE_STRING);
+    $signup_email = filter_var(htmlentities($_POST['email']),FILTER_SANITIZE_STRING);
+
+    $eunsql = "SELECT * FROM comptes WHERE username=:signup_username";
+    $exist_username = $conn->prepare($eunsql);
+    $exist_username->bindParam(':signup_username', $signup_username, PDO::PARAM_STR);
+    $exist_username->execute();
+
+    $eemsql = "SELECT * FROM comptes WHERE email=:signup_email";
+    $exist_email = $conn->prepare($eemsql);
+    $exist_email->bindParam(':signup_email', $signup_email, PDO::PARAM_STR);
+    $exist_email->execute();
+
+    $num_un_ex = $exist_username->rowCount();
+    $num_em_ex = $exist_email->rowCount();
+
+    $error = false;
+
+    if ($num_un_ex == 1){$error = true;}
+
+    if ($num_em_ex == 1){$error = true;}
+
     $array = array(
-      'error'=>false
+      'error'=>$error
     );
     $json = json_encode($array);
     echo $json;
+
   break;
 //
   case 'register' :
-    //echo $_POST['remail'];
-    //echo $_POST['rusername'];
+
+    $signup_id = (rand(0,99999).time()) + time();
+    $signup_username = filter_var(htmlentities($_POST['rusername']),FILTER_SANITIZE_STRING);
+    $signup_email = filter_var(htmlentities($_POST['remail']),FILTER_SANITIZE_STRING);
+    $signup_password_var = filter_var(htmlentities($_POST['rpassword']),FILTER_SANITIZE_STRING);
+    $options = array(
+        'cost' => 12,
+    );
+    $signup_password = password_hash($signup_password_var, PASSWORD_BCRYPT, $options);
+
+    $signupsql = "INSERT INTO comptes (id, username, email, password) VALUES (:signup_id, :signup_username, :signup_email, :signup_password)";
+    $query = $conn->prepare($signupsql);
+    $query->bindParam(':signup_id', $signup_id, PDO::PARAM_INT);
+    $query->bindParam(':signup_username', $signup_username, PDO::PARAM_STR);
+    $query->bindParam(':signup_email', $signup_email, PDO::PARAM_STR);
+    $query->bindParam(':signup_password', $signup_password, PDO::PARAM_STR);
+    $query->execute();
+
     $array = array(
       'error'=>false
     );
     $json = json_encode($array);
     echo $json;
+
   break;
 
 }
