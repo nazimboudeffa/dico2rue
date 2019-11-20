@@ -83,8 +83,52 @@ switch ($action) {
     $query->bindParam(':signup_password', $signup_password, PDO::PARAM_STR);
     $query->execute();
 
+    // ========================== login code after signup ============================
+    $loginsql = "SELECT * FROM comptes WHERE email= :email AND password= :password";
+    $query = $conn->prepare($loginsql);
+    $query->bindParam(':email', $signup_email, PDO::PARAM_STR);
+    $query->bindParam(':password', $signup_password, PDO::PARAM_STR);
+    $query->execute();
+    $num = $query->rowCount();
+
+    $error = false;
+
+    if($num == 0){
+      $error = true;
+    }else{
+      include ("../includes/login_fetch.php");
+    }
+
     $array = array(
-      'error'=>false
+      'error'=>$error
+    );
+    $json = json_encode($array);
+    echo $json;
+
+  break;
+//
+  case 'login' :
+
+    $email = htmlentities($_POST['lemail'], FILTER_SANITIZE_STRING);
+    $password = htmlentities($_POST['lpassword'], FILTER_SANITIZE_STRING);
+
+    $loginsql = "SELECT * FROM comptes WHERE email= :email AND password= :password";
+    $query = $conn->prepare($loginsql);
+    $query->bindParam(':email', $email, PDO::PARAM_STR);
+    $query->bindParam(':password', $password, PDO::PARAM_STR);
+    $query->execute();
+    $num = $query->rowCount();
+
+    $error = false;
+
+    if($num == 0){
+      $error = true;
+    }else{
+      include ("../includes/login_fetch.php");
+    }
+
+    $array = array(
+      'error'=>$error
     );
     $json = json_encode($array);
     echo $json;

@@ -1,8 +1,17 @@
 <?php
+// ================================ check user exist ===================================
 session_start();
-if (!isset($global['systemRootPath'])) {
-    require_once 'config/config.php';
-};
+include 'config/connect.php';
+$mys = $_SESSION['username'];
+$uCheckSession_sql = "SELECT username FROM comptes WHERE username=:mys";
+$uCheckSession = $conn->prepare($uCheckSession_sql);
+$uCheckSession->bindParam(':mys',$mys,PDO::PARAM_STR);
+$uCheckSession->execute();
+$uCheckSessionCount = $uCheckSession->rowCount();
+if ($uCheckSessionCount == 0) {
+    session_unset();
+    session_destroy();
+}
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
@@ -56,22 +65,22 @@ $('#forgotten').click(function(){
 	return false;
 });
 
-	// REGISTER
-	$('#registerForm').submit(function(){
-		var check = $(this).validationEngine('validate');
-		if(check === false){ return false; }
-		values = new Array();
-		values['remail'] = $('#remail').val();
-		values['rusername'] = $('#rusername').val();
-    values['rpassword'] = $('#rpassword').val();
-    values['rcpassword'] = $('#rcpassword').val();
-		values['agree'] = $('#agree').attr('checked');
-		if(values['rusername'] == ''){  $('#update').html("Il manque un pseudo");$('#update').fadeIn('fast');updatefadeout(); return false; }
-		if(values['remail'] == ''){  $('#update').html("Il manque un email");$('#update').fadeIn('fast');updatefadeout(); return false; }
-    if(values['rpassword'] == ''){  $('#update').html("Il manque un mot de passe");$('#update').fadeIn('fast');updatefadeout(); return false; }
-    if(values['rpassword'] != values['rcpassword']){  $('#update').html("Les deux mots de passe doivent être identiques");$('#update').fadeIn('fast');updatefadeout(); return false; }
-		if(values['agree'] == false){  $('#update').html("Merci d'accepter les conditions d'utilisation pour créer votre compte");$('#update').fadeIn('fast');updatefadeout(); return false; }
-	var checkeremail = $("#remail").validationEngine('validateField', "#remail");
+// REGISTER
+$('#registerForm').submit(function(){
+	var check = $(this).validationEngine('validate');
+	if(check === false){ return false; }
+	values = new Array();
+	values['remail'] = $('#remail').val();
+	values['rusername'] = $('#rusername').val();
+  values['rpassword'] = $('#rpassword').val();
+  values['rcpassword'] = $('#rcpassword').val();
+	values['agree'] = $('#agree').attr('checked');
+	if(values['rusername'] == ''){  $('#update').html("Il manque un pseudo");$('#update').fadeIn('fast');updatefadeout(); return false; }
+	if(values['remail'] == ''){  $('#update').html("Il manque un email");$('#update').fadeIn('fast');updatefadeout(); return false; }
+  if(values['rpassword'] == ''){  $('#update').html("Il manque un mot de passe");$('#update').fadeIn('fast');updatefadeout(); return false; }
+  if(values['rpassword'] != values['rcpassword']){  $('#update').html("Les deux mots de passe doivent être identiques");$('#update').fadeIn('fast');updatefadeout(); return false; }
+	if(values['agree'] == false){  $('#update').html("Merci d'accepter les conditions d'utilisation pour créer votre compte");$('#update').fadeIn('fast');updatefadeout(); return false; }
+  var checkeremail = $("#remail").validationEngine('validateField', "#remail");
 	if( checkeremail === true ){
 		 $('#update').html("Il manque un pseudo");$('#update').fadeIn('fast');updatefadeout();
 		return false;
@@ -82,106 +91,111 @@ $('#forgotten').click(function(){
 		return false;
 	};
 	var register_next = false;
-// Check the pseudo and email are not already existant
-$.ajax({
-	type: 'POST',
-	url: 'classes/actions.php',
-	data: { 'action' : 'check' , 'email' : values['remail'] , 'username' : values['rusername'], 'password' : values['rpassword'] },
-	dataType : 'json',
-	beforeSend:function(){
-		$('#update').html("Vérification de la disponibilité de votre Pseudo et email.");
-		$('#update').fadeIn('fast');
-	},
-	success:function(data){
-		if( data.error === false){
-			//var is_it_ok = true;
-			$('#update').html("Pseudo et email ok");
-			updatefadeout();
-			///////////////////////////////////////
-			$.ajax({
-				type: 'POST',
-				url: 'classes/actions.php',
-				data: { 'action' : 'register' , 'remail' : values['remail'] , 'rusername' : values['rusername'], 'rpassword' : values['rpassword']   },
-				dataType : 'json',
-				beforeSend:function(){
-					$('#update').html("Enregistrement de vos information");
-					$('#update').fadeIn('fast');
-				},
-				success:function(data){
+  // Check the pseudo and email are not already existant
+  $.ajax({
+  	type: 'POST',
+  	url: 'classes/actions.php',
+  	data: { 'action' : 'check' , 'email' : values['remail'] , 'username' : values['rusername'], 'password' : values['rpassword'] },
+  	dataType : 'json',
+  	beforeSend:function(){
+  		$('#update').html("Vérification de la disponibilité de votre Pseudo et email.");
+  		$('#update').fadeIn('fast');
+  	},
+  	success:function(data){
+  		if( data.error === false){
+  			//var is_it_ok = true;
+  			$('#update').html("Pseudo et email ok");
+  			updatefadeout();
+  			///////////////////////////////////////
+  			$.ajax({
+  				type: 'POST',
+  				url: 'classes/actions.php',
+  				data: { 'action' : 'register' , 'remail' : values['remail'] , 'rusername' : values['rusername'], 'rpassword' : values['rpassword']   },
+  				dataType : 'json',
+  				beforeSend:function(){
+  					$('#update').html("Enregistrement de vos information");
+  					$('#update').fadeIn('fast');
+  				},
+  				success:function(data){
+  					if( data.error === false){
+  						$('#update').html("Vous êtes maintenant connecté");
+  						updatefadeout();
+  						if ($("#word").length > 0){
+  							return AddWord();
+  						} else {
+                //window.location.href = "monprofil.php";
+  						}
+  					}
+  					if(data.error === true){
+  						$('#update').html("Il y a une erreur dans les informations, priez vérifier");
+  						updatefadeout();
+  						return false;
+  					}
+  				},
+  				error:function(data){
+  					//alert("Il y a une erreur.  Priez reloader la page.");
+  				}
+  			});
+  			///////////////////////////////////////
+  		}
+  		if(data.error === true){
+  			$('#femail').val(values['remail']);
+  			$('#forgottencontent').fadeIn('fast');
+  			if(data.src === 'email'){
+  				$('#update').html("Votre email est enregistré sous un autre pseudo, vous avez oublié votre mot de passe?");
+  			}
+  			if(data.src === 'username'){
+  				$('#update').html("Votre pseudo est déjà pris, merci d'en trouver un autre");
+  			}
+  			updatefadeout();
+  			return false;
+  		}
+  	},
+  	error:function(data){
+  		//alert("Il y a une erreur.  Priez reloader la page.");
+  	}
+  });
+	return false
+});
 
-					if( data.error === false){
-						$('#update').html("Vous êtes maintenant connecté");
-						updatefadeout();
-						if ($("#word").length > 0){
-							return AddWord();
-						} else {
-						}
-					}
-					if(data.error === true){
-						$('#update').html("Il y a une erreur dans les informations, priez vérifier");
-						updatefadeout();
-						return false;
-					}
-				},
-				error:function(data){
-					//alert("Il y a une erreur.  Priez reloader la page.");
-				}
-			});
-			///////////////////////////////////////
-		}
-		if(data.error === true){
-			$('#femail').val(values['remail']);
-			$('#forgottencontent').fadeIn('fast');
-			if(data.src === 'email'){
-				$('#update').html("Votre email est enregistré sous un autre pseudo, vous avez oublié votre mot de passe?");
-			}
-			if(data.src === 'username'){
-				$('#update').html("Votre pseudo est déjà pris, merci d'en trouver un autre");
-			}
-			updatefadeout();
-			return false;
-		}
-	},
-	error:function(data){
-		//alert("Il y a une erreur.  Priez reloader la page.");
-	}
-});
-		return false
-	});
-	$('#loginForm').submit(function(){
-		var check = $(this).validationEngine('validate');
-		if(check === false){ return false; }
-		var lemail = $('#lemail').val();
-		var lpassword = $('#lpassword').val();
-	     if(lemail === ''){  $('#update').html("Il manque un email");$('#update').fadeIn('fast');updatefadeout(); return false; }
-	     if(lpassword === ''){  $('#update').html("Il manque un mot de passe");$('#update').fadeIn('fast');updatefadeout(); return false; }
-		if( $("#lemail").validationEngine('validateField', "#lemail") === true ){ return false; };
-		if( $("#lpassword").validationEngine('validateField', "#lpassword") === true ){ return false; };
-$.ajax({
-     type: 'POST',
-     url: 'classes/actions.php',
-     data: { 'lemail' : lemail , 'lpassword' : lpassword , 'action' : 'login' },
-     dataType : 'json',
-     beforeSend:function(){
-          $('#update').html("Verification des informations.");
-          $('#update').fadeIn('fast');
-     },
-     success:function(data){
-        if( data.error === false){
-           $('#update').html("Vous êtes maintenant connecté");
-           updatefadeout();
-      		 if ($("#word").length > 0){
-      			 return AddWord();
-      		 } else { //? }
-        }
-        if(data.error === true){
-          $('#update').html("Erreur sur l'email ou le mot de passe");
-		      return false;
-        }
-     },
-     error:function(data){
-     }
-});
+$('#loginForm').submit(function(){
+	var check = $(this).validationEngine('validate');
+	if(check === false){ return false; }
+	var lemail = $('#lemail').val();
+	var lpassword = $('#lpassword').val();
+     if(lemail === ''){  $('#update').html("Il manque un email");$('#update').fadeIn('fast');updatefadeout(); return false; }
+     if(lpassword === ''){  $('#update').html("Il manque un mot de passe");$('#update').fadeIn('fast');updatefadeout(); return false; }
+	if( $("#lemail").validationEngine('validateField', "#lemail") === true ){ return false; };
+	if( $("#lpassword").validationEngine('validateField', "#lpassword") === true ){ return false; };
+  $.ajax({
+       type: 'POST',
+       url: 'classes/actions.php',
+       data: { 'lemail' : lemail , 'lpassword' : lpassword , 'action' : 'login' },
+       dataType : 'json',
+       beforeSend:function(){
+            $('#update').html("Verification des informations.");
+            $('#update').fadeIn('fast');
+       },
+       success:function(data){
+          if( data.error === false){
+             $('#update').html("Vous êtes maintenant connecté");
+             updatefadeout();
+        		 if ($("#word").length > 0){
+        			 return AddWord();
+        		 } else {
+               //?
+             }
+          }
+          if(data.error === true){
+            $('#update').html("Erreur sur l'email ou le mot de passe");
+  		      return false;
+          }
+       },
+       error:function(data){
+         console.log(data);
+         alert("Il y a une erreur.  Priez reloader la page.");
+       }
+    });
 		return false;
 	});
 });
@@ -235,32 +249,34 @@ $.ajax({
 <div class="right_column">
 <script type="text/javascript">
 $(document).ready(function(){
+
 	$('#add_right_word').focus(function(){
 		$('.add_right_fade').fadeIn('fast');
 		$(this).focus();
 	});
+
 	$('#right_add_module').submit(function(){
 		var checker = $(this).validationEngine('validate');
 		if(checker === false){ return false; }
-$.ajax({
-	type: 'POST',
-	url: 'classes/actions.php',
-	data: $(this).serialize(),
-	dataType : 'json',
-	beforeSend:function(){
-	},
-	success:function(data){
-		if( data.error === false){
-			//Success
-			window.location.href = "nouveau.php?function=Success";
-		}
-		if(data.error === true){
-			//alert('Already voted for this');
-			window.location.href = "rajoutez-un-mot.php";
-		}
-	}
-});
-	return false;
+    $.ajax({
+    	type: 'POST',
+    	url: 'classes/actions.php',
+    	data: $(this).serialize(),
+    	dataType : 'json',
+    	beforeSend:function(){
+    	},
+    	success:function(data){
+    		if( data.error === false){
+    			//Success
+    			window.location.href = "nouveau.php?function=Success";
+    		}
+    		if(data.error === true){
+    			//alert('Already voted for this');
+    			window.location.href = "rajoutez-un-mot.php";
+    		}
+    	}
+    });
+  	return false;
 	});
 });
 </script>

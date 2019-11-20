@@ -9,7 +9,14 @@
 		<!--<span id="moto">"Le dico PAR vous, POUR vous"</span>-->
 	</div>
 	<div class="clear"></div>
-	<div id="access_center"><a href="creer-un-compte.php">Cr&egrave;er un compte</a> | <a href="connexion.php">Se connecter</a></div>
+	<?php
+		if (isset($_SESSION['username'])){
+			echo '<div id="access_center">Bienvenue ' . $_SESSION['username'] . ' | <a href="monprofile.php">Mon profil</a> | <a href="forms/logout.php">Déconnexion</a></div>';
+		} else {
+			//echo '<div id="access_center"><a href="creer-un-compte.php">Cr&egrave;er un compte</a> | <a href="connexion.php">Se connecter</a></div>';
+			echo '<div id="access_center"><a href="compte.php">Compte</a></div>';
+		}
+	?>
 	<div class="left" id="menubar">
 		<a href="index.php"  class=""  >Mots du jour</a>
 		<a href="mots-au-hasard.php"  class=""  >Mots au Hasard</a>
