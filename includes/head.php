@@ -8,7 +8,9 @@
 <!-- FOR FB to know  -->
 <meta property="og:title" content="Dico 2 Rue"/>
 <meta property="og:type" content="article"/>
+<!--
 <meta property="og:url" content="http://www.dico2rue.com//"/>
+-->
 <meta property="og:site_name" content="Dico 2 Rue"/>
 <meta property="og:image" content="img/dico2rue.jpg"/>
 <!-- GOOGLE FOTNS  -->
@@ -26,3 +28,9 @@
         <link rel="stylesheet" type="text/css" href="css/ifie.css" />
 <![endif]-->
 <!--FOR SHARE THIS-->
+<script type="text/javascript">
+var switchTo5x=true;
+</script>
+<script type="text/javascript" src="button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher:'2595df41-8938-4ada-bb4c-fe56f89fafe9',onhover: false,theme:'3'});</script>
+<script src="js/script.js"></script>

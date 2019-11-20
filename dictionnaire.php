@@ -1,195 +1,12 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>D&eacute;finition de #tmtc | Dico 2 Rue</title><meta content="D&eacute;finition du dictionnaire pour #tmtc: Toi m&ecirc;me tu sais
-Souvent utilis&eacute; pour faire une r&eacute;f&eacute;rence" name="description" /><meta content="#tmtc, dictionnaire, d&eacute;finition, dico fran&ccedil;ais, argot, expression, dictionnaire fran&ccedil;ais, synonymes, d&eacute;finir, verlan" name="keywords" /><meta name="robots" content="index, follow" />
-<meta http-equiv="Content-Language" content="fr"/>
-<link rel="shortcut icon" href="img/favicon.ico" />
-<!-- FOR og tags  -->
-<meta property="og:country-name" content="FR"/>
-<!-- FOR FB to know  -->
-<meta property="og:title" content="Dico 2 Rue"/>
-<meta property="og:type" content="article"/>
-<meta property="og:url" content="http://www.dico2rue.com//dictionnaire/"/>
-<meta property="og:site_name" content="Dico 2 Rue"/>
-<meta property="og:image" content="http://www.dico2rue.com/img/dico2rue.jpg"/>
-<!-- GOOGLE FOTNS  -->
-<link href="http://fonts.googleapis.com/css?family=Anton:regular&v1" rel="stylesheet" type="text/css">
-<link href="css/general.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="js/jquery144.js"></script>
-<!-- MENUBAR -->
-<script type="text/javascript" src="js/lavalamp-1-3-3/lib/jquery.easing.1.3.js"></script>
-<script type="text/javascript" src="js/menuslide/js/jquery.spasticNav.js"></script>
-<!-- Validator -->
-<link rel="stylesheet" href="js/validator/css/validationEngine.jquery.css" type="text/css"/>
-<script src="js/validator/js/jquery.validationEngine-fr.js" type="text/javascript" charset="utf-8"></script>
-<script src="js/validator/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
-<!--[if IE ]>
-        <link rel="stylesheet" type="text/css" href="css/ifie.css" />
-<![endif]-->
-<!--FOR SHARE THIS-->
-<script type="text/javascript">var switchTo5x=true;</script><script type="text/javascript" src="button/buttons.js"></script><script type="text/javascript">stLight.options({publisher:'2595df41-8938-4ada-bb4c-fe56f89fafe9',onhover: false,theme:'3'});</script>
-<script type="text/javascript">
-$(document).ready(function(){
-	$('.voting').click(function(){
-		var values = $(this).attr('title');
-		values2  = values.split('-');
-$.ajax({
-	type: 'POST',
-	url: 'http://www.dico2rue.com/forms/vote.php',
-	data: { 'fun' : values2[0] , 'idW' : values2[1] },
-	dataType : 'json',
-	beforeSend:function(){
-	},
-	success:function(data){
-		if( data.error === false){
-			//Success
-			if(values2[0] === 'votedfor'){
-				var current = $('#'+values).html();
-				current = current*1+1;
-				$('#'+values).html(current);
-			}
-			if(values2[0] === 'votedagainst'){
-				var current = $('#'+values).html();
-				current = current*1+1;
-				$('#'+values).html(current);
-			}
-			// Change the image file
-			$('.fswitch'+values2[1]).removeClass('votefor');
-			$('.aswitch'+values2[1]).removeClass('voteagainst');
-			$('.fswitch'+values2[1]).addClass('votefordone');
-			$('.aswitch'+values2[1]).addClass('voteagainstdone');
-			// If on the Validate page, then reload
-			if(values2[2] === 'redirect' ){
-				window.location.reload(true);
-			}
-		}
-		if(data.error === true){
-			//alert('Already voted for this');
-		}
-	},
-	error:function(data){
-		//alert('Il y a eu une erreur, priez reloader la page.  Merci');
-	}
-});
-	if(values2[2] === 'redirect' ){
-		window.location.reload(true);
-	}
-	return false;
-	});
-	// The alphabet effect
-	$('#alphabet_row').spasticNav();
-	// The Form validator
-	//$(".forms").validationEngine('attach');
-	// SEARCH BAR
-	$('#mainsearch').click(function(){
-		var value = $(this).val();
-		var defaultval = $(this).attr('title');
-		if( value === defaultval ){ $(this).val(''); }
-	});
-	$('#mainsearch').blur(function(){
-		var value = $(this).val();
-		var defaultval = $(this).attr('title');
-		if( value === '' ){ $(this).val(defaultval); }
-	});
-	// If there is an error auto fadeout
-	$('#alphabet_row input').click(function(){
-		var value = $(this).val();
-		window.location.href = "http://www.dico2rue.com/dictionnaire/alphabet/"+value+"/";
-		return false;
-	});
-	$('#searchForm').submit(function(){
-		//var value = escape($('#mainsearch').val()); alert("http://www.dico2rue.com/dictionnaire/recherche/"+value+"/");
-		//window.location.href = "http://www.dico2rue.com/dictionnaire/recherche/"+value+"/";
-		//return false;
-	});
-});
-function updatefadeout(){
-	$('#update').delay(10000).fadeOut('fast');
-}
-// ADD A WORD
-function AddWord(word,definition,example,url_image){
-		var word = $('#word').val();
-		var definition = $('#definition').val();
-		var example = $('#example').val();
-		//var tags = $('#tags').val();
-		var url_image = $('#url_image').val();
-		if(word === ''){  $('#update').html("Le mot est manquant");$('#update').fadeIn('fast');updatefadeout(); return false; }
-		if(definition === ''){  $('#update').html("Il manque une definition");$('#update').fadeIn('fast');updatefadeout(); return false; }
-		if(example === ''){  $('#update').html("Il manque un exemple");$('#update').fadeIn('fast');updatefadeout(); return false; }
-		if( $("#word").validationEngine('validateField', "#word") === true ){ return false; };
-		if( $("#definition").validationEngine('validateField', "#definition") === true ){ return false; };
-		if( $("#example").validationEngine('validateField', "#example") === true ){ return false; };
-		//if( $("#tags").validationEngine('validateField', "#tags") === true ){ return false; };
-$.ajax({
-	type: 'POST',
-	url: 'http://www.dico2rue.com/classes/actions.php',
-	data: { 'action' : 'addWord' ,  'word' : word , 'definition' : definition  , 'example' : example  , 'url_image' : url_image},
-	dataType : 'json',
-	beforeSend:function(){
-		$('#update').html("Verification des informations.");
-		$('#update').fadeIn('fast');
-		$('#add_disp').fadeOut('fast');
-	},
-	success:function(data){
-		if( data.error === false){
-			$('#update').html("Votre mot a été rajouté.");
-			//$('#success').fadeIn('fast');
-		}
-		if(data.error === true){
-			$('#update').html("Il y a eu une erreur, priez ressayer");
-			$('#add_disp').fadeIn('fast');
-		}
-	},
-	error:function(data){
-		//alert();
-	}
-});
-}  // END OF ADD WORD
-</script>
+<head>
+<?php include 'includes/head.php' ?>
 </head>
 <body>
-<div style="background: yellow; color: #000; padding: 20px; text-align: center;">
-<p>
-Bonjour. Nous sommes désolés de vous annoncer que Dico2Rue sera déconnecté indéfiniment le 31 novembre 2018. Nous n'avons malheureusement plus le temps de gérer ce site.
-</p>
-</div>
+	<?php include 'includes/revive.php' ?>
 <div id="wrapper">
-<div id="header">
-	<span><div id="update" class="hide" ></div></span>
-	<div id="header_center">
-		<!--<div id="header_vote">
-		<a href="http://www.dico2rue.com//validation.php"><img src="http://www.dico2rue.com/img/votez-sans-creer-de-compte.jpg" height="100"  /></a></div>-->
-		<a href="index.html"><img id="logo" src="http://www.dico2rue.com//img/header1.gif" alt="Dico 2 rue" /></a>
-		<!--<a href="http://www.dico2rue.com//contact/"><img src="http://www.dico2rue.com//img/header2.gif" alt="Dico 2 rue - Bug" /></a>-->
-        <br />
-		<!--<span id="moto">"Le dico PAR vous, POUR vous"</span>-->
-	</div>
-	<div class="clear"></div>
-	<div id="access_center"><a href="creer-un-compte.html">Cr&egrave;er un compte</a> | <a href="connexion.html">Se connecter</a></div>
-	<div class="left" id="menubar">
-		<a href="index.html"  class=""  >Mots du jour</a>
-		<a href="mots-au-hasard.html"  class=""  >Mots au Hasard</a>
-		<a href="dictionnaire.html"  class="menubar_active"  >Dictionnaire</a>
-		<a href="validez-les-nouveautes.html"  class=""  >Validez les nouveautés</a>
-		<a href="rajoutez-un-mot.html"  class=""  >Rajouter un mot</a>
-	</div>
-	<div class="right" id="searchbar">
-		<form action="dictionnaire.html" method="get" id="searchForm">
-			<input type="text" name="q" value="Recherche..." title="Recherche..." class="rounded10" id="mainsearch" style="width:200px;"  />
-			<button type="submit">&nbsp;</button>
-		</form>
-	</div>
-	<div class="clear"></div>
-<form action="dictionnaire.html" method="get">
-	<div id="alphabet">
-		<ul id="alphabet_row">
-			<li><input type="submit" name="alphabet"  value="A" /></li><li><input type="submit" name="alphabet"  value="B" /></li><li><input type="submit" name="alphabet"  value="C" /></li><li><input type="submit" name="alphabet"  value="D" /></li><li><input type="submit" name="alphabet"  value="E" /></li><li><input type="submit" name="alphabet"  value="F" /></li><li><input type="submit" name="alphabet"  value="G" /></li><li><input type="submit" name="alphabet"  value="H" /></li><li><input type="submit" name="alphabet"  value="I" /></li><li><input type="submit" name="alphabet"  value="J" /></li><li><input type="submit" name="alphabet"  value="K" /></li><li><input type="submit" name="alphabet"  value="L" /></li><li><input type="submit" name="alphabet"  value="M" /></li><li><input type="submit" name="alphabet"  value="N" /></li><li><input type="submit" name="alphabet"  value="O" /></li><li><input type="submit" name="alphabet"  value="P" /></li><li><input type="submit" name="alphabet"  value="Q" /></li><li><input type="submit" name="alphabet"  value="R" /></li><li><input type="submit" name="alphabet"  value="S" /></li><li><input type="submit" name="alphabet"  value="T" /></li><li><input type="submit" name="alphabet"  value="U" /></li><li><input type="submit" name="alphabet"  value="V" /></li><li><input type="submit" name="alphabet"  value="W" /></li><li><input type="submit" name="alphabet"  value="X" /></li><li><input type="submit" name="alphabet"  value="Y" /></li><li><input type="submit" name="alphabet"  value="Z" /></li><li><input type="submit" name="alphabet" class="alphabet_row_active" value=" " style="margin:Opx;" /></li>		</ul>
-	</div>
-</form>
-</div>
+	<?php include 'includes/header.php' ?>
 <div class="clear"></div>
 <div id="content">
 <div class="left_column">
@@ -231,7 +48,7 @@ $(document).ready(function(){
 	<br /> bof
 </td>
 <td class="word marg_left">
-	[ <a href="index.html">#tmtc</a> ] 
+	[ <a href="index.html">#tmtc</a> ]
 		<br />
 </td>
 </tr>
@@ -252,20 +69,20 @@ Souvent utilisé pour faire une référence <br />
 		<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.dico2rue.com/dictionnaire/mot/4026/tmtc" data-count="horizontal" data-lang="fr">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 	</div>
 	<div class="facebook_count">
-		<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.dico2rue.com%2Fdictionnaire%2Fmot%2F4026%2Ftmtc&amp;layout=button_count&amp;show_faces=false&amp;width=90&amp;action=like&amp;font=arial&amp;colorscheme=light&amp;height=21" scrolling="no"  style="border:none; overflow:hidden; width:90px; height:21px;" frameborder="0" allowTransparency="true"></iframe> 
+		<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.dico2rue.com%2Fdictionnaire%2Fmot%2F4026%2Ftmtc&amp;layout=button_count&amp;show_faces=false&amp;width=90&amp;action=like&amp;font=arial&amp;colorscheme=light&amp;height=21" scrolling="no"  style="border:none; overflow:hidden; width:90px; height:21px;" frameborder="0" allowTransparency="true"></iframe>
 	</div>-->
      <br />
-     <span class="st_plusone" st_url="http://www.dico2rue.com/dictionnaire/mot/4026/tmtc"></span> 
+     <span class="st_plusone" st_url="http://www.dico2rue.com/dictionnaire/mot/4026/tmtc"></span>
      <div style="position:relative; top:-2px; left:34px;">
 <span class="st_facebook" st_url="http://www.dico2rue.com/dictionnaire/mot/4026/tmtc"></span>
 <span class="st_twitter"  st_url="http://www.dico2rue.com/dictionnaire/mot/4026/tmtc"></span>
 <span class="st_linkedin"  st_url="http://www.dico2rue.com/dictionnaire/mot/4026/tmtc"></span>
 <span class="st_delicious"  st_url="http://www.dico2rue.com/dictionnaire/mot/4026/tmtc"></span>
-<span class="st_email"  st_url="http://www.dico2rue.com/dictionnaire/mot/4026/tmtc"></span>   
-</div>  
+<span class="st_email"  st_url="http://www.dico2rue.com/dictionnaire/mot/4026/tmtc"></span>
+</div>
      <div style="position:relative; top:-34px; left:180px">
 		<span>Par <a href="index.html">Wiserey</a></span>
-		<span><img src="http://www.dico2rue.com/img/bulb.gif" alt="Pas d'accord" style="position:relative; top:3px;" /><a href="index.html" title="Pas d'accord avec cette d&eacute;fintion? Cliquez et cr&eacute;ez la votre en quelques secondes..."> Pas d'accord?</a></span>     
+		<span><img src="http://www.dico2rue.com/img/bulb.gif" alt="Pas d'accord" style="position:relative; top:3px;" /><a href="index.html" title="Pas d'accord avec cette d&eacute;fintion? Cliquez et cr&eacute;ez la votre en quelques secondes..."> Pas d'accord?</a></span>
 	</div>
     <div style="position:relative; top:-34px;">
     	 Utilisez-le sur votre site:
@@ -294,7 +111,7 @@ Souvent utilisé pour faire une référence <br />
 	<br /> bof
 </td>
 <td class="word marg_left">
-	[ <a href="index.html">#tplg</a> ] 
+	[ <a href="index.html">#tplg</a> ]
 		<br />
 </td>
 </tr>
@@ -314,20 +131,20 @@ Souvent utilisé pour faire une référence <br />
 		<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.dico2rue.com/dictionnaire/mot/3414/tplg" data-count="horizontal" data-lang="fr">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 	</div>
 	<div class="facebook_count">
-		<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.dico2rue.com%2Fdictionnaire%2Fmot%2F3414%2Ftplg&amp;layout=button_count&amp;show_faces=false&amp;width=90&amp;action=like&amp;font=arial&amp;colorscheme=light&amp;height=21" scrolling="no"  style="border:none; overflow:hidden; width:90px; height:21px;" frameborder="0" allowTransparency="true"></iframe> 
+		<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.dico2rue.com%2Fdictionnaire%2Fmot%2F3414%2Ftplg&amp;layout=button_count&amp;show_faces=false&amp;width=90&amp;action=like&amp;font=arial&amp;colorscheme=light&amp;height=21" scrolling="no"  style="border:none; overflow:hidden; width:90px; height:21px;" frameborder="0" allowTransparency="true"></iframe>
 	</div>-->
      <br />
-     <span class="st_plusone" st_url="http://www.dico2rue.com/dictionnaire/mot/3414/tplg"></span> 
+     <span class="st_plusone" st_url="http://www.dico2rue.com/dictionnaire/mot/3414/tplg"></span>
      <div style="position:relative; top:-2px; left:34px;">
 <span class="st_facebook" st_url="http://www.dico2rue.com/dictionnaire/mot/3414/tplg"></span>
 <span class="st_twitter"  st_url="http://www.dico2rue.com/dictionnaire/mot/3414/tplg"></span>
 <span class="st_linkedin"  st_url="http://www.dico2rue.com/dictionnaire/mot/3414/tplg"></span>
 <span class="st_delicious"  st_url="http://www.dico2rue.com/dictionnaire/mot/3414/tplg"></span>
-<span class="st_email"  st_url="http://www.dico2rue.com/dictionnaire/mot/3414/tplg"></span>   
-</div>  
+<span class="st_email"  st_url="http://www.dico2rue.com/dictionnaire/mot/3414/tplg"></span>
+</div>
      <div style="position:relative; top:-34px; left:180px">
 		<span>Par <a href="index.html">Kkkk</a></span>
-		<span><img src="http://www.dico2rue.com/img/bulb.gif" alt="Pas d'accord" style="position:relative; top:3px;" /><a href="index.html" title="Pas d'accord avec cette d&eacute;fintion? Cliquez et cr&eacute;ez la votre en quelques secondes..."> Pas d'accord?</a></span>     
+		<span><img src="http://www.dico2rue.com/img/bulb.gif" alt="Pas d'accord" style="position:relative; top:3px;" /><a href="index.html" title="Pas d'accord avec cette d&eacute;fintion? Cliquez et cr&eacute;ez la votre en quelques secondes..."> Pas d'accord?</a></span>
 	</div>
     <div style="position:relative; top:-34px;">
     	 Utilisez-le sur votre site:
@@ -356,7 +173,7 @@ Souvent utilisé pour faire une référence <br />
 	<br /> bof
 </td>
 <td class="word marg_left">
-	[ <a href="index.html">'sk</a> ] 
+	[ <a href="index.html">'sk</a> ]
 		<br />
 </td>
 </tr>
@@ -378,20 +195,20 @@ Cette gonz est fraiche'SK! "</p>
 		<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.dico2rue.com/dictionnaire/mot/1332/sk" data-count="horizontal" data-lang="fr">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 	</div>
 	<div class="facebook_count">
-		<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.dico2rue.com%2Fdictionnaire%2Fmot%2F1332%2Fsk&amp;layout=button_count&amp;show_faces=false&amp;width=90&amp;action=like&amp;font=arial&amp;colorscheme=light&amp;height=21" scrolling="no"  style="border:none; overflow:hidden; width:90px; height:21px;" frameborder="0" allowTransparency="true"></iframe> 
+		<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.dico2rue.com%2Fdictionnaire%2Fmot%2F1332%2Fsk&amp;layout=button_count&amp;show_faces=false&amp;width=90&amp;action=like&amp;font=arial&amp;colorscheme=light&amp;height=21" scrolling="no"  style="border:none; overflow:hidden; width:90px; height:21px;" frameborder="0" allowTransparency="true"></iframe>
 	</div>-->
      <br />
-     <span class="st_plusone" st_url="http://www.dico2rue.com/dictionnaire/mot/1332/sk"></span> 
+     <span class="st_plusone" st_url="http://www.dico2rue.com/dictionnaire/mot/1332/sk"></span>
      <div style="position:relative; top:-2px; left:34px;">
 <span class="st_facebook" st_url="http://www.dico2rue.com/dictionnaire/mot/1332/sk"></span>
 <span class="st_twitter"  st_url="http://www.dico2rue.com/dictionnaire/mot/1332/sk"></span>
 <span class="st_linkedin"  st_url="http://www.dico2rue.com/dictionnaire/mot/1332/sk"></span>
 <span class="st_delicious"  st_url="http://www.dico2rue.com/dictionnaire/mot/1332/sk"></span>
-<span class="st_email"  st_url="http://www.dico2rue.com/dictionnaire/mot/1332/sk"></span>   
-</div>  
+<span class="st_email"  st_url="http://www.dico2rue.com/dictionnaire/mot/1332/sk"></span>
+</div>
      <div style="position:relative; top:-34px; left:180px">
 		<span>Par <a href="index.html">thomchab</a></span>
-		<span><img src="http://www.dico2rue.com/img/bulb.gif" alt="Pas d'accord" style="position:relative; top:3px;" /><a href="index.html" title="Pas d'accord avec cette d&eacute;fintion? Cliquez et cr&eacute;ez la votre en quelques secondes..."> Pas d'accord?</a></span>     
+		<span><img src="http://www.dico2rue.com/img/bulb.gif" alt="Pas d'accord" style="position:relative; top:3px;" /><a href="index.html" title="Pas d'accord avec cette d&eacute;fintion? Cliquez et cr&eacute;ez la votre en quelques secondes..."> Pas d'accord?</a></span>
 	</div>
     <div style="position:relative; top:-34px;">
     	 Utilisez-le sur votre site:
@@ -420,7 +237,7 @@ Cette gonz est fraiche'SK! "</p>
 	<br /> bof
 </td>
 <td class="word marg_left">
-	[ <a href="index.html">-ment</a> ] 
+	[ <a href="index.html">-ment</a> ]
 		<br />
 </td>
 </tr>
@@ -441,20 +258,20 @@ Ex. Mal+_ment = malement. Ce mec t'as malement regardé ! <br />
 		<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.dico2rue.com/dictionnaire/mot/987/ment" data-count="horizontal" data-lang="fr">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 	</div>
 	<div class="facebook_count">
-		<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.dico2rue.com%2Fdictionnaire%2Fmot%2F987%2Fment&amp;layout=button_count&amp;show_faces=false&amp;width=90&amp;action=like&amp;font=arial&amp;colorscheme=light&amp;height=21" scrolling="no"  style="border:none; overflow:hidden; width:90px; height:21px;" frameborder="0" allowTransparency="true"></iframe> 
+		<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.dico2rue.com%2Fdictionnaire%2Fmot%2F987%2Fment&amp;layout=button_count&amp;show_faces=false&amp;width=90&amp;action=like&amp;font=arial&amp;colorscheme=light&amp;height=21" scrolling="no"  style="border:none; overflow:hidden; width:90px; height:21px;" frameborder="0" allowTransparency="true"></iframe>
 	</div>-->
      <br />
-     <span class="st_plusone" st_url="http://www.dico2rue.com/dictionnaire/mot/987/ment"></span> 
+     <span class="st_plusone" st_url="http://www.dico2rue.com/dictionnaire/mot/987/ment"></span>
      <div style="position:relative; top:-2px; left:34px;">
 <span class="st_facebook" st_url="http://www.dico2rue.com/dictionnaire/mot/987/ment"></span>
 <span class="st_twitter"  st_url="http://www.dico2rue.com/dictionnaire/mot/987/ment"></span>
 <span class="st_linkedin"  st_url="http://www.dico2rue.com/dictionnaire/mot/987/ment"></span>
 <span class="st_delicious"  st_url="http://www.dico2rue.com/dictionnaire/mot/987/ment"></span>
-<span class="st_email"  st_url="http://www.dico2rue.com/dictionnaire/mot/987/ment"></span>   
-</div>  
+<span class="st_email"  st_url="http://www.dico2rue.com/dictionnaire/mot/987/ment"></span>
+</div>
      <div style="position:relative; top:-34px; left:180px">
 		<span>Par <a href="index.html">thuginho</a></span>
-		<span><img src="http://www.dico2rue.com/img/bulb.gif" alt="Pas d'accord" style="position:relative; top:3px;" /><a href="index.html" title="Pas d'accord avec cette d&eacute;fintion? Cliquez et cr&eacute;ez la votre en quelques secondes..."> Pas d'accord?</a></span>     
+		<span><img src="http://www.dico2rue.com/img/bulb.gif" alt="Pas d'accord" style="position:relative; top:3px;" /><a href="index.html" title="Pas d'accord avec cette d&eacute;fintion? Cliquez et cr&eacute;ez la votre en quelques secondes..."> Pas d'accord?</a></span>
 	</div>
     <div style="position:relative; top:-34px;">
     	 Utilisez-le sur votre site:
@@ -483,7 +300,7 @@ Ex. Mal+_ment = malement. Ce mec t'as malement regardé ! <br />
 	<br /> bof
 </td>
 <td class="word marg_left">
-	[ <a href="index.html">06</a> ] 
+	[ <a href="index.html">06</a> ]
 		<br />
 </td>
 </tr>
@@ -503,20 +320,20 @@ Ex. Mal+_ment = malement. Ce mec t'as malement regardé ! <br />
 		<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.dico2rue.com/dictionnaire/mot/1476/06" data-count="horizontal" data-lang="fr">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 	</div>
 	<div class="facebook_count">
-		<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.dico2rue.com%2Fdictionnaire%2Fmot%2F1476%2F06&amp;layout=button_count&amp;show_faces=false&amp;width=90&amp;action=like&amp;font=arial&amp;colorscheme=light&amp;height=21" scrolling="no"  style="border:none; overflow:hidden; width:90px; height:21px;" frameborder="0" allowTransparency="true"></iframe> 
+		<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.dico2rue.com%2Fdictionnaire%2Fmot%2F1476%2F06&amp;layout=button_count&amp;show_faces=false&amp;width=90&amp;action=like&amp;font=arial&amp;colorscheme=light&amp;height=21" scrolling="no"  style="border:none; overflow:hidden; width:90px; height:21px;" frameborder="0" allowTransparency="true"></iframe>
 	</div>-->
      <br />
-     <span class="st_plusone" st_url="http://www.dico2rue.com/dictionnaire/mot/1476/06"></span> 
+     <span class="st_plusone" st_url="http://www.dico2rue.com/dictionnaire/mot/1476/06"></span>
      <div style="position:relative; top:-2px; left:34px;">
 <span class="st_facebook" st_url="http://www.dico2rue.com/dictionnaire/mot/1476/06"></span>
 <span class="st_twitter"  st_url="http://www.dico2rue.com/dictionnaire/mot/1476/06"></span>
 <span class="st_linkedin"  st_url="http://www.dico2rue.com/dictionnaire/mot/1476/06"></span>
 <span class="st_delicious"  st_url="http://www.dico2rue.com/dictionnaire/mot/1476/06"></span>
-<span class="st_email"  st_url="http://www.dico2rue.com/dictionnaire/mot/1476/06"></span>   
-</div>  
+<span class="st_email"  st_url="http://www.dico2rue.com/dictionnaire/mot/1476/06"></span>
+</div>
      <div style="position:relative; top:-34px; left:180px">
 		<span>Par <a href="index.html">Garc</a></span>
-		<span><img src="http://www.dico2rue.com/img/bulb.gif" alt="Pas d'accord" style="position:relative; top:3px;" /><a href="index.html" title="Pas d'accord avec cette d&eacute;fintion? Cliquez et cr&eacute;ez la votre en quelques secondes..."> Pas d'accord?</a></span>     
+		<span><img src="http://www.dico2rue.com/img/bulb.gif" alt="Pas d'accord" style="position:relative; top:3px;" /><a href="index.html" title="Pas d'accord avec cette d&eacute;fintion? Cliquez et cr&eacute;ez la votre en quelques secondes..."> Pas d'accord?</a></span>
 	</div>
     <div style="position:relative; top:-34px;">
     	 Utilisez-le sur votre site:
@@ -545,7 +362,7 @@ Ex. Mal+_ment = malement. Ce mec t'as malement regardé ! <br />
 	<br /> bof
 </td>
 <td class="word marg_left">
-	[ <a href="index.html">2 spi</a> ] 
+	[ <a href="index.html">2 spi</a> ]
 		<br />
 </td>
 </tr>
@@ -565,20 +382,20 @@ Ex. Mal+_ment = malement. Ce mec t'as malement regardé ! <br />
 		<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.dico2rue.com/dictionnaire/mot/1317/2-spi" data-count="horizontal" data-lang="fr">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 	</div>
 	<div class="facebook_count">
-		<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.dico2rue.com%2Fdictionnaire%2Fmot%2F1317%2F2-spi&amp;layout=button_count&amp;show_faces=false&amp;width=90&amp;action=like&amp;font=arial&amp;colorscheme=light&amp;height=21" scrolling="no"  style="border:none; overflow:hidden; width:90px; height:21px;" frameborder="0" allowTransparency="true"></iframe> 
+		<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.dico2rue.com%2Fdictionnaire%2Fmot%2F1317%2F2-spi&amp;layout=button_count&amp;show_faces=false&amp;width=90&amp;action=like&amp;font=arial&amp;colorscheme=light&amp;height=21" scrolling="no"  style="border:none; overflow:hidden; width:90px; height:21px;" frameborder="0" allowTransparency="true"></iframe>
 	</div>-->
      <br />
-     <span class="st_plusone" st_url="http://www.dico2rue.com/dictionnaire/mot/1317/2-spi"></span> 
+     <span class="st_plusone" st_url="http://www.dico2rue.com/dictionnaire/mot/1317/2-spi"></span>
      <div style="position:relative; top:-2px; left:34px;">
 <span class="st_facebook" st_url="http://www.dico2rue.com/dictionnaire/mot/1317/2-spi"></span>
 <span class="st_twitter"  st_url="http://www.dico2rue.com/dictionnaire/mot/1317/2-spi"></span>
 <span class="st_linkedin"  st_url="http://www.dico2rue.com/dictionnaire/mot/1317/2-spi"></span>
 <span class="st_delicious"  st_url="http://www.dico2rue.com/dictionnaire/mot/1317/2-spi"></span>
-<span class="st_email"  st_url="http://www.dico2rue.com/dictionnaire/mot/1317/2-spi"></span>   
-</div>  
+<span class="st_email"  st_url="http://www.dico2rue.com/dictionnaire/mot/1317/2-spi"></span>
+</div>
      <div style="position:relative; top:-34px; left:180px">
 		<span>Par <a href="index.html">Giulia883</a></span>
-		<span><img src="http://www.dico2rue.com/img/bulb.gif" alt="Pas d'accord" style="position:relative; top:3px;" /><a href="index.html" title="Pas d'accord avec cette d&eacute;fintion? Cliquez et cr&eacute;ez la votre en quelques secondes..."> Pas d'accord?</a></span>     
+		<span><img src="http://www.dico2rue.com/img/bulb.gif" alt="Pas d'accord" style="position:relative; top:3px;" /><a href="index.html" title="Pas d'accord avec cette d&eacute;fintion? Cliquez et cr&eacute;ez la votre en quelques secondes..."> Pas d'accord?</a></span>
 	</div>
     <div style="position:relative; top:-34px;">
     	 Utilisez-le sur votre site:
@@ -607,7 +424,7 @@ Ex. Mal+_ment = malement. Ce mec t'as malement regardé ! <br />
 	<br /> bof
 </td>
 <td class="word marg_left">
-	[ <a href="index.html">22</a> ] 
+	[ <a href="index.html">22</a> ]
 		<br />
 </td>
 </tr>
@@ -627,20 +444,20 @@ Ex. Mal+_ment = malement. Ce mec t'as malement regardé ! <br />
 		<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.dico2rue.com/dictionnaire/mot/2031/22" data-count="horizontal" data-lang="fr">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 	</div>
 	<div class="facebook_count">
-		<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.dico2rue.com%2Fdictionnaire%2Fmot%2F2031%2F22&amp;layout=button_count&amp;show_faces=false&amp;width=90&amp;action=like&amp;font=arial&amp;colorscheme=light&amp;height=21" scrolling="no"  style="border:none; overflow:hidden; width:90px; height:21px;" frameborder="0" allowTransparency="true"></iframe> 
+		<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.dico2rue.com%2Fdictionnaire%2Fmot%2F2031%2F22&amp;layout=button_count&amp;show_faces=false&amp;width=90&amp;action=like&amp;font=arial&amp;colorscheme=light&amp;height=21" scrolling="no"  style="border:none; overflow:hidden; width:90px; height:21px;" frameborder="0" allowTransparency="true"></iframe>
 	</div>-->
      <br />
-     <span class="st_plusone" st_url="http://www.dico2rue.com/dictionnaire/mot/2031/22"></span> 
+     <span class="st_plusone" st_url="http://www.dico2rue.com/dictionnaire/mot/2031/22"></span>
      <div style="position:relative; top:-2px; left:34px;">
 <span class="st_facebook" st_url="http://www.dico2rue.com/dictionnaire/mot/2031/22"></span>
 <span class="st_twitter"  st_url="http://www.dico2rue.com/dictionnaire/mot/2031/22"></span>
 <span class="st_linkedin"  st_url="http://www.dico2rue.com/dictionnaire/mot/2031/22"></span>
 <span class="st_delicious"  st_url="http://www.dico2rue.com/dictionnaire/mot/2031/22"></span>
-<span class="st_email"  st_url="http://www.dico2rue.com/dictionnaire/mot/2031/22"></span>   
-</div>  
+<span class="st_email"  st_url="http://www.dico2rue.com/dictionnaire/mot/2031/22"></span>
+</div>
      <div style="position:relative; top:-34px; left:180px">
 		<span>Par <a href="index.html">voldemort78</a></span>
-		<span><img src="http://www.dico2rue.com/img/bulb.gif" alt="Pas d'accord" style="position:relative; top:3px;" /><a href="index.html" title="Pas d'accord avec cette d&eacute;fintion? Cliquez et cr&eacute;ez la votre en quelques secondes..."> Pas d'accord?</a></span>     
+		<span><img src="http://www.dico2rue.com/img/bulb.gif" alt="Pas d'accord" style="position:relative; top:3px;" /><a href="index.html" title="Pas d'accord avec cette d&eacute;fintion? Cliquez et cr&eacute;ez la votre en quelques secondes..."> Pas d'accord?</a></span>
 	</div>
     <div style="position:relative; top:-34px;">
     	 Utilisez-le sur votre site:
@@ -669,7 +486,7 @@ Ex. Mal+_ment = malement. Ce mec t'as malement regardé ! <br />
 	<br /> bof
 </td>
 <td class="word marg_left">
-	[ <a href="index.html">4chan</a> ] 
+	[ <a href="index.html">4chan</a> ]
 		<br />
 </td>
 </tr>
@@ -690,20 +507,20 @@ Une version française beaucoup plus petite et animée existe aussi, elle s'appe
 		<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.dico2rue.com/dictionnaire/mot/701/4chan" data-count="horizontal" data-lang="fr">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 	</div>
 	<div class="facebook_count">
-		<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.dico2rue.com%2Fdictionnaire%2Fmot%2F701%2F4chan&amp;layout=button_count&amp;show_faces=false&amp;width=90&amp;action=like&amp;font=arial&amp;colorscheme=light&amp;height=21" scrolling="no"  style="border:none; overflow:hidden; width:90px; height:21px;" frameborder="0" allowTransparency="true"></iframe> 
+		<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.dico2rue.com%2Fdictionnaire%2Fmot%2F701%2F4chan&amp;layout=button_count&amp;show_faces=false&amp;width=90&amp;action=like&amp;font=arial&amp;colorscheme=light&amp;height=21" scrolling="no"  style="border:none; overflow:hidden; width:90px; height:21px;" frameborder="0" allowTransparency="true"></iframe>
 	</div>-->
      <br />
-     <span class="st_plusone" st_url="http://www.dico2rue.com/dictionnaire/mot/701/4chan"></span> 
+     <span class="st_plusone" st_url="http://www.dico2rue.com/dictionnaire/mot/701/4chan"></span>
      <div style="position:relative; top:-2px; left:34px;">
 <span class="st_facebook" st_url="http://www.dico2rue.com/dictionnaire/mot/701/4chan"></span>
 <span class="st_twitter"  st_url="http://www.dico2rue.com/dictionnaire/mot/701/4chan"></span>
 <span class="st_linkedin"  st_url="http://www.dico2rue.com/dictionnaire/mot/701/4chan"></span>
 <span class="st_delicious"  st_url="http://www.dico2rue.com/dictionnaire/mot/701/4chan"></span>
-<span class="st_email"  st_url="http://www.dico2rue.com/dictionnaire/mot/701/4chan"></span>   
-</div>  
+<span class="st_email"  st_url="http://www.dico2rue.com/dictionnaire/mot/701/4chan"></span>
+</div>
      <div style="position:relative; top:-34px; left:180px">
 		<span>Par <a href="index.html">helloworld</a></span>
-		<span><img src="http://www.dico2rue.com/img/bulb.gif" alt="Pas d'accord" style="position:relative; top:3px;" /><a href="index.html" title="Pas d'accord avec cette d&eacute;fintion? Cliquez et cr&eacute;ez la votre en quelques secondes..."> Pas d'accord?</a></span>     
+		<span><img src="http://www.dico2rue.com/img/bulb.gif" alt="Pas d'accord" style="position:relative; top:3px;" /><a href="index.html" title="Pas d'accord avec cette d&eacute;fintion? Cliquez et cr&eacute;ez la votre en quelques secondes..."> Pas d'accord?</a></span>
 	</div>
     <div style="position:relative; top:-34px;">
     	 Utilisez-le sur votre site:
@@ -732,7 +549,7 @@ Une version française beaucoup plus petite et animée existe aussi, elle s'appe
 	<br /> bof
 </td>
 <td class="word marg_left">
-	[ <a href="index.html">6ra</a> ] 
+	[ <a href="index.html">6ra</a> ]
 		<br />
 </td>
 </tr>
@@ -752,20 +569,20 @@ Une version française beaucoup plus petite et animée existe aussi, elle s'appe
 		<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.dico2rue.com/dictionnaire/mot/702/6ra" data-count="horizontal" data-lang="fr">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 	</div>
 	<div class="facebook_count">
-		<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.dico2rue.com%2Fdictionnaire%2Fmot%2F702%2F6ra&amp;layout=button_count&amp;show_faces=false&amp;width=90&amp;action=like&amp;font=arial&amp;colorscheme=light&amp;height=21" scrolling="no"  style="border:none; overflow:hidden; width:90px; height:21px;" frameborder="0" allowTransparency="true"></iframe> 
+		<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.dico2rue.com%2Fdictionnaire%2Fmot%2F702%2F6ra&amp;layout=button_count&amp;show_faces=false&amp;width=90&amp;action=like&amp;font=arial&amp;colorscheme=light&amp;height=21" scrolling="no"  style="border:none; overflow:hidden; width:90px; height:21px;" frameborder="0" allowTransparency="true"></iframe>
 	</div>-->
      <br />
-     <span class="st_plusone" st_url="http://www.dico2rue.com/dictionnaire/mot/702/6ra"></span> 
+     <span class="st_plusone" st_url="http://www.dico2rue.com/dictionnaire/mot/702/6ra"></span>
      <div style="position:relative; top:-2px; left:34px;">
 <span class="st_facebook" st_url="http://www.dico2rue.com/dictionnaire/mot/702/6ra"></span>
 <span class="st_twitter"  st_url="http://www.dico2rue.com/dictionnaire/mot/702/6ra"></span>
 <span class="st_linkedin"  st_url="http://www.dico2rue.com/dictionnaire/mot/702/6ra"></span>
 <span class="st_delicious"  st_url="http://www.dico2rue.com/dictionnaire/mot/702/6ra"></span>
-<span class="st_email"  st_url="http://www.dico2rue.com/dictionnaire/mot/702/6ra"></span>   
-</div>  
+<span class="st_email"  st_url="http://www.dico2rue.com/dictionnaire/mot/702/6ra"></span>
+</div>
      <div style="position:relative; top:-34px; left:180px">
 		<span>Par <a href="index.html">AnonymouS</a></span>
-		<span><img src="http://www.dico2rue.com/img/bulb.gif" alt="Pas d'accord" style="position:relative; top:3px;" /><a href="index.html" title="Pas d'accord avec cette d&eacute;fintion? Cliquez et cr&eacute;ez la votre en quelques secondes..."> Pas d'accord?</a></span>     
+		<span><img src="http://www.dico2rue.com/img/bulb.gif" alt="Pas d'accord" style="position:relative; top:3px;" /><a href="index.html" title="Pas d'accord avec cette d&eacute;fintion? Cliquez et cr&eacute;ez la votre en quelques secondes..."> Pas d'accord?</a></span>
 	</div>
     <div style="position:relative; top:-34px;">
     	 Utilisez-le sur votre site:
@@ -794,7 +611,7 @@ Une version française beaucoup plus petite et animée existe aussi, elle s'appe
 	<br /> bof
 </td>
 <td class="word marg_left">
-	[ <a href="index.html">6t</a> ] 
+	[ <a href="index.html">6t</a> ]
 		<br />
 </td>
 </tr>
@@ -815,20 +632,20 @@ Niska, poète des temps modernes dans chasse à l'homme "</p>
 		<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.dico2rue.com/dictionnaire/mot/3440/6t" data-count="horizontal" data-lang="fr">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 	</div>
 	<div class="facebook_count">
-		<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.dico2rue.com%2Fdictionnaire%2Fmot%2F3440%2F6t&amp;layout=button_count&amp;show_faces=false&amp;width=90&amp;action=like&amp;font=arial&amp;colorscheme=light&amp;height=21" scrolling="no"  style="border:none; overflow:hidden; width:90px; height:21px;" frameborder="0" allowTransparency="true"></iframe> 
+		<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.dico2rue.com%2Fdictionnaire%2Fmot%2F3440%2F6t&amp;layout=button_count&amp;show_faces=false&amp;width=90&amp;action=like&amp;font=arial&amp;colorscheme=light&amp;height=21" scrolling="no"  style="border:none; overflow:hidden; width:90px; height:21px;" frameborder="0" allowTransparency="true"></iframe>
 	</div>-->
      <br />
-     <span class="st_plusone" st_url="http://www.dico2rue.com/dictionnaire/mot/3440/6t"></span> 
+     <span class="st_plusone" st_url="http://www.dico2rue.com/dictionnaire/mot/3440/6t"></span>
      <div style="position:relative; top:-2px; left:34px;">
 <span class="st_facebook" st_url="http://www.dico2rue.com/dictionnaire/mot/3440/6t"></span>
 <span class="st_twitter"  st_url="http://www.dico2rue.com/dictionnaire/mot/3440/6t"></span>
 <span class="st_linkedin"  st_url="http://www.dico2rue.com/dictionnaire/mot/3440/6t"></span>
 <span class="st_delicious"  st_url="http://www.dico2rue.com/dictionnaire/mot/3440/6t"></span>
-<span class="st_email"  st_url="http://www.dico2rue.com/dictionnaire/mot/3440/6t"></span>   
-</div>  
+<span class="st_email"  st_url="http://www.dico2rue.com/dictionnaire/mot/3440/6t"></span>
+</div>
      <div style="position:relative; top:-34px; left:180px">
 		<span>Par <a href="index.html">Lasixt</a></span>
-		<span><img src="http://www.dico2rue.com/img/bulb.gif" alt="Pas d'accord" style="position:relative; top:3px;" /><a href="index.html" title="Pas d'accord avec cette d&eacute;fintion? Cliquez et cr&eacute;ez la votre en quelques secondes..."> Pas d'accord?</a></span>     
+		<span><img src="http://www.dico2rue.com/img/bulb.gif" alt="Pas d'accord" style="position:relative; top:3px;" /><a href="index.html" title="Pas d'accord avec cette d&eacute;fintion? Cliquez et cr&eacute;ez la votre en quelques secondes..."> Pas d'accord?</a></span>
 	</div>
     <div style="position:relative; top:-34px;">
     	 Utilisez-le sur votre site:

@@ -1,195 +1,12 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Mots du jour du dictionnaire d&prime;argot | Dico 2 Rue </title><meta content="D&eacute;couvrez  le mot du jour... Dico 2 Rue est le dictionnaire collaboratif de l&prime;argot.  A vous de voter et cr&eacute;er les mots et expressions ainsi que les d&eacute;finitions de ce dico fran&ccedil;ais moderne." name="description" /><meta content="mots du jour, dictionnaire, d&eacute;finition, dico fran&ccedil;ais, argot, expression, dictionnaire fran&ccedil;ais, synonymes, d&eacute;finir, verlan, " name="keywords" /><meta name="robots" content="index, follow" />
-<meta http-equiv="Content-Language" content="fr"/>
-<link rel="shortcut icon" href="img/favicon.ico" />
-<!-- FOR og tags  -->
-<meta property="og:country-name" content="FR"/>
-<!-- FOR FB to know  -->
-<meta property="og:title" content="Dico 2 Rue"/>
-<meta property="og:type" content="article"/>
-<meta property="og:url" content="http://www.dico2rue.com//connexion/"/>
-<meta property="og:site_name" content="Dico 2 Rue"/>
-<meta property="og:image" content="http://www.dico2rue.com/img/dico2rue.jpg"/>
-<!-- GOOGLE FOTNS  -->
-<link href="http://fonts.googleapis.com/css?family=Anton:regular&v1" rel="stylesheet" type="text/css">
-<link href="css/general.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="js/jquery144.js"></script>
-<!-- MENUBAR -->
-<script type="text/javascript" src="js/lavalamp-1-3-3/lib/jquery.easing.1.3.js"></script>
-<script type="text/javascript" src="js/menuslide/js/jquery.spasticNav.js"></script>
-<!-- Validator -->
-<link rel="stylesheet" href="js/validator/css/validationEngine.jquery.css" type="text/css"/>
-<script src="js/validator/js/jquery.validationEngine-fr.js" type="text/javascript" charset="utf-8"></script>
-<script src="js/validator/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
-<!--[if IE ]>
-        <link rel="stylesheet" type="text/css" href="css/ifie.css" />
-<![endif]-->
-<link rel="stylesheet" type="text/css" href="css/ifff.css" />
-<!--FOR SHARE THIS-->
-<script type="text/javascript">var switchTo5x=true;</script><script type="text/javascript" src="button/buttons.js"></script><script type="text/javascript">stLight.options({publisher:'2595df41-8938-4ada-bb4c-fe56f89fafe9',onhover: false,theme:'3'});</script>
-<script type="text/javascript">
-$(document).ready(function(){
-	$('.voting').click(function(){
-		var values = $(this).attr('title');
-		values2  = values.split('-');
-$.ajax({
-	type: 'POST',
-	url: 'http://www.dico2rue.com/forms/vote.php',
-	data: { 'fun' : values2[0] , 'idW' : values2[1] },
-	dataType : 'json',
-	beforeSend:function(){
-	},
-	success:function(data){
-		if( data.error === false){
-			//Success
-			if(values2[0] === 'votedfor'){
-				var current = $('#'+values).html();
-				current = current*1+1;
-				$('#'+values).html(current);
-			}
-			if(values2[0] === 'votedagainst'){
-				var current = $('#'+values).html();
-				current = current*1+1;
-				$('#'+values).html(current);
-			}
-			// Change the image file
-			$('.fswitch'+values2[1]).removeClass('votefor');
-			$('.aswitch'+values2[1]).removeClass('voteagainst');
-			$('.fswitch'+values2[1]).addClass('votefordone');
-			$('.aswitch'+values2[1]).addClass('voteagainstdone');
-			// If on the Validate page, then reload
-			if(values2[2] === 'redirect' ){
-				window.location.reload(true);
-			}
-		}
-		if(data.error === true){
-			//alert('Already voted for this');
-		}
-	},
-	error:function(data){
-		//alert('Il y a eu une erreur, priez reloader la page.  Merci');
-	}
-});
-	if(values2[2] === 'redirect' ){
-		window.location.reload(true);
-	}
-	return false;
-	});
-	// The alphabet effect
-	$('#alphabet_row').spasticNav();
-	// The Form validator
-	//$(".forms").validationEngine('attach');
-	// SEARCH BAR
-	$('#mainsearch').click(function(){
-		var value = $(this).val();
-		var defaultval = $(this).attr('title');
-		if( value === defaultval ){ $(this).val(''); }
-	});
-	$('#mainsearch').blur(function(){
-		var value = $(this).val();
-		var defaultval = $(this).attr('title');
-		if( value === '' ){ $(this).val(defaultval); }
-	});
-	// If there is an error auto fadeout
-	$('#alphabet_row input').click(function(){
-		var value = $(this).val();
-		window.location.href = "http://www.dico2rue.com/dictionnaire/alphabet/"+value+"/";
-		return false;
-	});
-	$('#searchForm').submit(function(){
-		//var value = escape($('#mainsearch').val()); alert("http://www.dico2rue.com/dictionnaire/recherche/"+value+"/");
-		//window.location.href = "http://www.dico2rue.com/dictionnaire/recherche/"+value+"/";
-		//return false;
-	});
-});
-function updatefadeout(){
-	$('#update').delay(10000).fadeOut('fast');
-}
-// ADD A WORD
-function AddWord(word,definition,example,url_image){
-		var word = $('#word').val();
-		var definition = $('#definition').val();
-		var example = $('#example').val();
-		//var tags = $('#tags').val();
-		var url_image = $('#url_image').val();
-		if(word === ''){  $('#update').html("Le mot est manquant");$('#update').fadeIn('fast');updatefadeout(); return false; }
-		if(definition === ''){  $('#update').html("Il manque une definition");$('#update').fadeIn('fast');updatefadeout(); return false; }
-		if(example === ''){  $('#update').html("Il manque un exemple");$('#update').fadeIn('fast');updatefadeout(); return false; }
-		if( $("#word").validationEngine('validateField', "#word") === true ){ return false; };
-		if( $("#definition").validationEngine('validateField', "#definition") === true ){ return false; };
-		if( $("#example").validationEngine('validateField', "#example") === true ){ return false; };
-		//if( $("#tags").validationEngine('validateField', "#tags") === true ){ return false; };
-$.ajax({
-	type: 'POST',
-	url: 'http://www.dico2rue.com/classes/actions.php',
-	data: { 'action' : 'addWord' ,  'word' : word , 'definition' : definition  , 'example' : example  , 'url_image' : url_image},
-	dataType : 'json',
-	beforeSend:function(){
-		$('#update').html("Verification des informations.");
-		$('#update').fadeIn('fast');
-		$('#add_disp').fadeOut('fast');
-	},
-	success:function(data){
-		if( data.error === false){
-			$('#update').html("Votre mot a été rajouté.");
-			//$('#success').fadeIn('fast');
-		}
-		if(data.error === true){
-			$('#update').html("Il y a eu une erreur, priez ressayer");
-			$('#add_disp').fadeIn('fast');
-		}
-	},
-	error:function(data){
-		//alert();
-	}
-});
-}  // END OF ADD WORD
-</script>
+<head>
+	<?php include 'includes/head.php' ?>
 </head>
 <body>
-<div style="background: yellow; color: #000; padding: 20px; text-align: center;">
-<p>
-Bonjour. Nous sommes désolés de vous annoncer que Dico2Rue sera déconnecté indéfiniment le 31 novembre 2018. Nous n'avons malheureusement plus le temps de gérer ce site.
-</p>
-</div>
+	<?php include 'includes/revive.php' ?>
 <div id="wrapper">
-<div id="header">
-	<span><div id="update" class="hide" ></div></span>
-	<div id="header_center">
-		<!--<div id="header_vote">
-		<a href="http://www.dico2rue.com//validation.php"><img src="http://www.dico2rue.com/img/votez-sans-creer-de-compte.jpg" height="100"  /></a></div>-->
-		<a href="index.html"><img id="logo" src="http://www.dico2rue.com//img/header1.gif" alt="Dico 2 rue" /></a>
-		<!--<a href="http://www.dico2rue.com//contact/"><img src="http://www.dico2rue.com//img/header2.gif" alt="Dico 2 rue - Bug" /></a>-->
-        <br />
-		<!--<span id="moto">"Le dico PAR vous, POUR vous"</span>-->
-	</div>
-	<div class="clear"></div>
-	<div id="access_center"><a href="creer-un-compte.html">Cr&egrave;er un compte</a> | <a href="connexion.html">Se connecter</a></div>
-	<div class="left" id="menubar">
-		<a href="index.html"  class=""  >Mots du jour</a>
-		<a href="mots-au-hasard.html"  class=""  >Mots au Hasard</a>
-		<a href="dictionnaire.html"  class=""  >Dictionnaire</a>
-		<a href="validez-les-nouveautes.html"  class=""  >Validez les nouveautés</a>
-		<a href="rajoutez-un-mot.html"  class=""  >Rajouter un mot</a>
-	</div>
-	<div class="right" id="searchbar">
-		<form action="dictionnaire.html" method="get" id="searchForm">
-			<input type="text" name="q" value="Recherche..." title="Recherche..." class="rounded10" id="mainsearch" style="width:200px;"  />
-			<button type="submit">&nbsp;</button>
-		</form>
-	</div>
-	<div class="clear"></div>
-<form action="dictionnaire.html" method="get">
-	<div id="alphabet">
-		<ul id="alphabet_row">
-			<li><input type="submit" name="alphabet"  value="A" /></li><li><input type="submit" name="alphabet"  value="B" /></li><li><input type="submit" name="alphabet"  value="C" /></li><li><input type="submit" name="alphabet"  value="D" /></li><li><input type="submit" name="alphabet"  value="E" /></li><li><input type="submit" name="alphabet"  value="F" /></li><li><input type="submit" name="alphabet"  value="G" /></li><li><input type="submit" name="alphabet"  value="H" /></li><li><input type="submit" name="alphabet"  value="I" /></li><li><input type="submit" name="alphabet"  value="J" /></li><li><input type="submit" name="alphabet"  value="K" /></li><li><input type="submit" name="alphabet"  value="L" /></li><li><input type="submit" name="alphabet"  value="M" /></li><li><input type="submit" name="alphabet"  value="N" /></li><li><input type="submit" name="alphabet"  value="O" /></li><li><input type="submit" name="alphabet"  value="P" /></li><li><input type="submit" name="alphabet"  value="Q" /></li><li><input type="submit" name="alphabet"  value="R" /></li><li><input type="submit" name="alphabet"  value="S" /></li><li><input type="submit" name="alphabet"  value="T" /></li><li><input type="submit" name="alphabet"  value="U" /></li><li><input type="submit" name="alphabet"  value="V" /></li><li><input type="submit" name="alphabet"  value="W" /></li><li><input type="submit" name="alphabet"  value="X" /></li><li><input type="submit" name="alphabet"  value="Y" /></li><li><input type="submit" name="alphabet"  value="Z" /></li><li><input type="submit" name="alphabet" class="alphabet_row_active" value=" " style="margin:Opx;" /></li>		</ul>
-	</div>
-</form>
-</div>
+	<?php include 'includes/header.php' ?>
 <div class="clear"></div>
 <div id="content">
 <div class="left_column">
@@ -197,78 +14,78 @@ Bonjour. Nous sommes désolés de vous annoncer que Dico2Rue sera déconnecté i
 $(document).ready(function(){
 	// FORGOTTEN EMAIL
 	$('#forgottenbutton').click(function(){
-			$('#forgottencontent').fadeIn('fast');		
+			$('#forgottencontent').fadeIn('fast');
 			return false;
 	});
 	$('#forgotten').click(function(){
 		var email = $('#femail').val();
-	     if(email === ''){  $('#update').html("Il manque un email");$('#update').fadeIn('fast');updatefadeout(); return false; }           if( $("#femail").validationEngine('validateField', "#femail") === true ){ return false; };                   
-$.ajax({
-     type: 'POST',
-     url: 'http://www.dico2rue.com/classes/actions.php',
-     data: { 'action' :  'login_forgotten', 'email' : email },
-     dataType : 'json',
-     beforeSend:function(){
-          $('#update').html("Verification de votre email...");
-          $('#update').fadeIn('fast');
-     },
-     success:function(data){
-          if( data.error === false){ 
-               $('#update').html("Un email avec votre nouveau mot de passe vous a été envoyé, vous le recevrez sous peu.");
-               updatefadeout();
-          }
-          if(data.error === true){
-               $('#update').html("Votre email n\'est pas dans notre base de données.");
-               updatefadeout();
-          }
-     },
-     error:function(data){
-          //alert("Il y a une erreur.  Priez reloader la page.");
-     }
-});    
+	     if(email === ''){  $('#update').html("Il manque un email");$('#update').fadeIn('fast');updatefadeout(); return false; }           if( $("#femail").validationEngine('validateField', "#femail") === true ){ return false; };
+				$.ajax({
+				     type: 'POST',
+				     url: 'classes/actions.php',
+				     data: { 'action' :  'login_forgotten', 'email' : email },
+				     dataType : 'json',
+				     beforeSend:function(){
+				          $('#update').html("Verification de votre email...");
+				          $('#update').fadeIn('fast');
+				     },
+				     success:function(data){
+				          if( data.error === false){
+				               $('#update').html("Un email avec votre nouveau mot de passe vous a été envoyé, vous le recevrez sous peu.");
+				               updatefadeout();
+				          }
+				          if(data.error === true){
+				               $('#update').html("Votre email n\'est pas dans notre base de données.");
+				               updatefadeout();
+				          }
+				     },
+				     error:function(data){
+				          //alert("Il y a une erreur.  Priez reloader la page.");
+				     }
+				});
           return false;
-     });    
+     });
 	// REGISTER
 	$('#registerForm').submit(function(){
 		var check = $(this).validationEngine('validate');
 		if(check === false){ return false; }
 		values = new Array();
 		values['remail'] = $('#remail').val();
-		values['rusername'] = $('#rusername').val(); 
+		values['rusername'] = $('#rusername').val();
 		values['agree'] = $('#agree').attr('checked');
 		if(values['rusername'] == ''){  $('#update').html("Il manque un pseudo");$('#update').fadeIn('fast');updatefadeout(); return false; }
 		if(values['remail'] == ''){  $('#update').html("Il manque un email");$('#update').fadeIn('fast');updatefadeout(); return false; }
 		if(values['agree'] == false){  $('#update').html("Merci d'accepter les conditions d'utilisation pour créer votre compte");$('#update').fadeIn('fast');updatefadeout(); return false; }
 	var checkeremail = $("#remail").validationEngine('validateField', "#remail");
-	if( checkeremail === true ){ 
+	if( checkeremail === true ){
 		 $('#update').html("Il manque un pseudo");$('#update').fadeIn('fast');updatefadeout();
-		return false; 
+		return false;
 	};
 	var checkerusername = $("#rusername").validationEngine('validateField', "#rusername");
-	if( checkerusername === true ){ 
+	if( checkerusername === true ){
 		$('#update').html("Il manque un email");$('#update').fadeIn('fast');updatefadeout();
-		return false; 
+		return false;
 	};
 	var register_next = false;
 // Check the pseudo and email are not already existant
 $.ajax({
 	type: 'POST',
-	url: 'http://www.dico2rue.com/classes/actions.php',
+	url: 'classes/actions.php',
 	data: { 'action' : 'check' , 'email' : values['remail'] , 'username' : values['rusername'] },
 	dataType : 'json',
-	beforeSend:function(){ 
+	beforeSend:function(){
 		$('#update').html("Vérification de la disponibilité de votre Pseudo et email.");
 		$('#update').fadeIn('fast');
 	},
 	success:function(data){
-		if( data.error === false){  
+		if( data.error === false){
 			//var is_it_ok = true;
 			$('#update').html("Pseudo et email ok");
 			updatefadeout();
 ///////////////////////////////////////
 $.ajax({
 	type: 'POST',
-	url: 'http://www.dico2rue.com/classes/actions.php',
+	url: 'classes/actions.php',
 	data: { 'action' : 'register' , 'remail' : values['remail'] , 'rusername' : values['rusername']   },
 	dataType : 'json',
 	beforeSend:function(){
@@ -276,16 +93,16 @@ $.ajax({
 		$('#update').fadeIn('fast');
 	},
 	success:function(data){
-		if( data.error === false){  
+		if( data.error === false){
 			$('#update').html("Vous êtes maintenant connecté");
 			updatefadeout();
-			if ($("#word").length > 0){ 
+			if ($("#word").length > 0){
 				return AddWord();
 			} else {
 			}
 		}
 		if(data.error === true){
-			$('#update').html("Il y a une erreur dans les informations, priez vérifier");			
+			$('#update').html("Il y a une erreur dans les informations, priez vérifier");
 			updatefadeout();
 			return false;
 		}
@@ -293,18 +110,18 @@ $.ajax({
 	error:function(data){
 		//alert("Il y a une erreur.  Priez reloader la page.");
 	}
-});				
+});
 ///////////////////////////////////////
 		}
 		if(data.error === true){
 			$('#femail').val(values['remail']);
 			$('#forgottencontent').fadeIn('fast');
 			if(data.src === 'email'){
-				$('#update').html("Votre email est enregistré sous un autre pseudo, vous avez oublié votre mot de passe?");	
-			} 
+				$('#update').html("Votre email est enregistré sous un autre pseudo, vous avez oublié votre mot de passe?");
+			}
 			if(data.src === 'username'){
 				$('#update').html("Votre pseudo est déjà pris, merci d'en trouver un autre");
-			} 			
+			}
 			updatefadeout();
 			return false;
 		}
@@ -312,7 +129,7 @@ $.ajax({
 	error:function(data){
 		//alert("Il y a une erreur.  Priez reloader la page.");
 	}
-});	
+});
 		return false
 	});
 	$('#loginForm').submit(function(){
@@ -320,24 +137,24 @@ $.ajax({
 		if(check === false){ return false; }
 		var lemail = $('#lemail').val();
 		var lpassword = $('#lpassword').val();
-	     if(lemail === ''){  $('#update').html("Il manque un email");$('#update').fadeIn('fast');updatefadeout(); return false; }   	
-	     if(lpassword === ''){  $('#update').html("Il manque un mot de passe");$('#update').fadeIn('fast');updatefadeout(); return false; }   		
+	     if(lemail === ''){  $('#update').html("Il manque un email");$('#update').fadeIn('fast');updatefadeout(); return false; }
+	     if(lpassword === ''){  $('#update').html("Il manque un mot de passe");$('#update').fadeIn('fast');updatefadeout(); return false; }
 		if( $("#lemail").validationEngine('validateField', "#lemail") === true ){ return false; };
 		if( $("#lpassword").validationEngine('validateField', "#lpassword") === true ){ return false; };
 $.ajax({
      type: 'POST',
-     url: 'http://www.dico2rue.com/classes/actions.php',
+     url: 'classes/actions.php',
      data: { 'lemail' : lemail , 'lpassword' : lpassword , 'action' : 'login' },
      dataType : 'json',
      beforeSend:function(){
           $('#update').html("Verification des informations.");
           $('#update').fadeIn('fast');
      },
-     success:function(data){ 
-          if( data.error === false){ 
+     success:function(data){
+          if( data.error === false){
                $('#update').html("Vous êtes maintenant connecté");
                updatefadeout();
-			if ($("#word").length > 0){ 
+			if ($("#word").length > 0){
 				return AddWord();
 			} else {
 			}
@@ -349,8 +166,8 @@ $.ajax({
      },
      error:function(data){
      }
-}); 
-		return false;					
+});
+		return false;
 	});
 });
 </script>
@@ -376,13 +193,13 @@ $.ajax({
 	<div class="hide" id="forgottencontent">
 	<br>
 	<label>Votre email :</label>
-	<input type="text" name="femail" id="femail" class="validate[custom[email]]" value="" tabindex="9" />	
+	<input type="text" name="femail" id="femail" class="validate[custom[email]]" value="" tabindex="9" />
 	<button type="button" id="forgotten" class="buttons right" tabindex="10">Récuperer</button>
 	</div>
 </div>
 <div class="right accessRight loginregister">
 	<h1>Inscription en 2 secondes</h1>
-<form method="post" action="" id="registerForm" class="forms">	
+<form method="post" action="" id="registerForm" class="forms">
 	<label>Votre pseudo :</label>
 	<input type="text" name="rusername" id="rusername" class="validate[required,minSize[3],custom[onlyLetterNumber]]" value="" tabindex="11"  />
 	<label>Votre email :</label>
@@ -394,7 +211,7 @@ $.ajax({
 	<label>Confirmer mot de passe :</label>
 	<input type="password" name="rcpassword" id="rcpassword" class="validate[minSize[6],maxSize[15]]" tabindex="14"  />
 -->
-	<input type="checkbox" name="agree" id="agree" class="validate[required]" style="width:30px;" tabindex="15" /> J'accepte les <a href="index.html" target="_blank">conditions d'utilisation</a> du site. 
+	<input type="checkbox" name="agree" id="agree" class="validate[required]" style="width:30px;" tabindex="15" /> J'accepte les <a href="index.html" target="_blank">conditions d'utilisation</a> du site.
 	<button type="submit" class="buttons right"  name="function" id="register" value="register" tabindex="16">Valider</button>
 </form>
 </div>
@@ -412,7 +229,7 @@ $(document).ready(function(){
 		if(checker === false){ return false; }
 $.ajax({
 	type: 'POST',
-	url: 'http://www.dico2rue.com/classes/actions.php',
+	url: 'classes/actions.php',
 	data: $(this).serialize(),
 	dataType : 'json',
 	beforeSend:function(){
@@ -420,7 +237,7 @@ $.ajax({
 	success:function(data){
 		if( data.error === false){
 			//Success
-			window.location.href = "http://www.dico2rue.com/nouveau.php?function=Success";
+			window.location.href = "nouveau.php?function=Success";
 		}
 		if(data.error === true){
 			//alert('Already voted for this');
