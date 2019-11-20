@@ -12,6 +12,4 @@ $_SESSION['username'] = $row_username;
 $_SESSION['email'] = $row_email;
 $_SESSION['password'] = $row_password;
 
-header("location: monprofil.php");
-
 ?>

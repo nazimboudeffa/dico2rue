@@ -1,17 +1,5 @@
 <?php
-// ================================ check user exist ===================================
 session_start();
-include 'config/connect.php';
-$mys = $_SESSION['username'];
-$uCheckSession_sql = "SELECT username FROM comptes WHERE username=:mys";
-$uCheckSession = $conn->prepare($uCheckSession_sql);
-$uCheckSession->bindParam(':mys',$mys,PDO::PARAM_STR);
-$uCheckSession->execute();
-$uCheckSessionCount = $uCheckSession->rowCount();
-if ($uCheckSessionCount == 0) {
-    session_unset();
-    session_destroy();
-}
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
@@ -123,7 +111,7 @@ $('#registerForm').submit(function(){
   						if ($("#word").length > 0){
   							return AddWord();
   						} else {
-                //window.location.href = "monprofil.php";
+                window.location.href = "monprofile.php";
   						}
   					}
   					if(data.error === true){
@@ -163,8 +151,8 @@ $('#loginForm').submit(function(){
 	if(check === false){ return false; }
 	var lemail = $('#lemail').val();
 	var lpassword = $('#lpassword').val();
-     if(lemail === ''){  $('#update').html("Il manque un email");$('#update').fadeIn('fast');updatefadeout(); return false; }
-     if(lpassword === ''){  $('#update').html("Il manque un mot de passe");$('#update').fadeIn('fast');updatefadeout(); return false; }
+  if(lemail === ''){  $('#update').html("Il manque un email");$('#update').fadeIn('fast');updatefadeout(); return false; }
+  if(lpassword === ''){  $('#update').html("Il manque un mot de passe");$('#update').fadeIn('fast');updatefadeout(); return false; }
 	if( $("#lemail").validationEngine('validateField', "#lemail") === true ){ return false; };
 	if( $("#lpassword").validationEngine('validateField', "#lpassword") === true ){ return false; };
   $.ajax({
@@ -177,13 +165,14 @@ $('#loginForm').submit(function(){
             $('#update').fadeIn('fast');
        },
        success:function(data){
+         console.log(data);
           if( data.error === false){
              $('#update').html("Vous êtes maintenant connecté");
              updatefadeout();
         		 if ($("#word").length > 0){
         			 return AddWord();
         		 } else {
-               //?
+               window.location.href = "monprofile.php";
              }
           }
           if(data.error === true){

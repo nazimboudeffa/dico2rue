@@ -1,17 +1,5 @@
 <?php
-// ================================ check user exist ===================================
 session_start();
-include 'config/connect.php';
-$mys = $_SESSION['username'];
-$uCheckSession_sql = "SELECT username FROM comptes WHERE username=:mys";
-$uCheckSession = $conn->prepare($uCheckSession_sql);
-$uCheckSession->bindParam(':mys',$mys,PDO::PARAM_STR);
-$uCheckSession->execute();
-$uCheckSessionCount = $uCheckSession->rowCount();
-if ($uCheckSessionCount == 0) {
-    session_unset();
-    session_destroy();
-}
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">

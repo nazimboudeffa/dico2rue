@@ -110,12 +110,11 @@ switch ($action) {
   case 'login' :
 
     $email = htmlentities($_POST['lemail'], FILTER_SANITIZE_STRING);
-    $password = htmlentities($_POST['lpassword'], FILTER_SANITIZE_STRING);
+    $password = filter_var(htmlentities($_POST['lpassword']),FILTER_SANITIZE_STRING);
 
-    $loginsql = "SELECT * FROM comptes WHERE email= :email AND password= :password";
+    $loginsql = "SELECT * FROM comptes WHERE email= :email";
     $query = $conn->prepare($loginsql);
     $query->bindParam(':email', $email, PDO::PARAM_STR);
-    $query->bindParam(':password', $password, PDO::PARAM_STR);
     $query->execute();
     $num = $query->rowCount();
 
@@ -127,7 +126,19 @@ switch ($action) {
       include ("../includes/login_fetch.php");
     }
 
+    while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
+      $verif_password = $row['password'];
+      if(!password_verify($password,$verif_password)){
+        $error = true;
+      }else{
+        include ("../includes/login_fetch.php");
+      }
+    }
+
     $array = array(
+      'email'=>$email,
+      'password'=>$password,
+      'num'=>$num,
       'error'=>$error
     );
     $json = json_encode($array);
