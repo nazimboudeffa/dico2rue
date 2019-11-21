@@ -7,9 +7,11 @@ $(document).ready(function(){
 		url: 'forms/vote.php',
 		data: { 'fun' : values2[0] , 'idW' : values2[1] },
 		dataType : 'json',
-		beforeSend:function(){
+		beforeSend:function(data){
+			console.log(data);
 		},
 		success:function(data){
+			console.log(data);
 			if( data.error === false){
 				//Success
 				if(values2[0] === 'votedfor'){
@@ -33,7 +35,7 @@ $(document).ready(function(){
 				}
 			}
 			if(data.error === true){
-				//alert('Already voted for this');
+				alert(data.message);
 			}
 		},
 		error:function(data){

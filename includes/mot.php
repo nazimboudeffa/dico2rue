@@ -1,19 +1,39 @@
+<?php
+
+$t = 1;
+$f = 0;
+
+$vforsql = "SELECT COUNT(*) FROM votes WHERE id_mot=:id_mot AND up=1";
+$result = $conn->prepare($vforsql);
+$result->bindParam(':id_mot', $row_id_mot, PDO::PARAM_INT);
+//$result->bindParam(':up', $t, PDO::PARAM_INT);
+$result->execute();
+$number_of_rows_for = $result->fetchColumn();
+
+$vagainstsql = "SELECT COUNT(*) FROM votes WHERE id_mot=:id_mot AND down=:down";
+$result = $conn->prepare($vagainstsql);
+$result->bindParam(':id_mot', $row_id_mot, PDO::PARAM_INT);
+$result->bindParam(':down', $t, PDO::PARAM_INT);
+$result->execute();
+$number_of_rows_against = $result->fetchColumn();
+
+?>
 
 <div class="words">
 <table>
 <tr>
 <td rowspan="5" class="votes" align="center" valign="top">
-	<a href="#" class="voting" title="votedfor-1700">
-		<div class="votefor fswitch1700" ></div>
+	<a href="#" class="voting" title="votedfor-<?php echo $row_id_mot ?>">
+		<div class="votefor fswitch<?php echo $row_id_mot ?>" ></div>
 	</a>
-	<span id="votedfor-1700">426</span>
+	<span id="votedfor-<?php echo $row_id_mot ?>"><?php echo $number_of_rows_for ?></span>
 	<br /> yeah!
 </td>
 <td rowspan="5" class="votes" align="center" valign="top">
-	<a href="#" class="voting" title="votedagainst-1700">
-		<div class="voteagainst aswitch1700" ></div>
+	<a href="#" class="voting" title="votedagainst-<?php echo $row_id_mot ?>">
+		<div class="voteagainst aswitch<?php echo $row_id_mot ?>" ></div>
 	</a>
-	<span id="votedagainst-1700">92</span>
+	<span id="votedagainst-<?php echo $row_id_mot ?>"><?php echo $number_of_rows_against ?></span>
 	<br /> bof
 </td>
 <td class="word marg_left">

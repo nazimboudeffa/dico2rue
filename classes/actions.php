@@ -136,9 +136,6 @@ switch ($action) {
     }
 
     $array = array(
-      'email'=>$email,
-      'password'=>$password,
-      'num'=>$num,
       'error'=>$error
     );
     $json = json_encode($array);
