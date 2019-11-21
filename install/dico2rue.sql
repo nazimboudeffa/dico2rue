@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  mer. 20 nov. 2019 à 20:33
+-- Généré le :  jeu. 21 nov. 2019 à 02:07
 -- Version du serveur :  10.4.8-MariaDB
 -- Version de PHP :  7.3.11
 
@@ -29,8 +29,8 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `comptes` (
-  `main_id` int(11) NOT NULL,
-  `id` bigint(50) NOT NULL,
+  `id` int(11) NOT NULL,
+  `id_user` bigint(50) NOT NULL,
   `username` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
@@ -43,10 +43,12 @@ CREATE TABLE `comptes` (
 --
 
 CREATE TABLE `mots` (
-  `id_mot` int(11) NOT NULL,
-  `mot` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `def` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `exemple` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `id` int(11) NOT NULL,
+  `id_mot` bigint(50) NOT NULL,
+  `mot` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `username` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `def` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `exemple` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -69,7 +71,13 @@ CREATE TABLE `votes` (
 -- Index pour la table `comptes`
 --
 ALTER TABLE `comptes`
-  ADD PRIMARY KEY (`main_id`);
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `mots`
+--
+ALTER TABLE `mots`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT pour les tables déchargées
@@ -79,7 +87,13 @@ ALTER TABLE `comptes`
 -- AUTO_INCREMENT pour la table `comptes`
 --
 ALTER TABLE `comptes`
-  MODIFY `main_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `mots`
+--
+ALTER TABLE `mots`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
