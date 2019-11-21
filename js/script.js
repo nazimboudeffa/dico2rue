@@ -35,7 +35,7 @@ $(document).ready(function(){
 				}
 			}
 			if(data.error === true){
-				alert(data.message);
+				//alert(data.message);
 			}
 		},
 		error:function(data){

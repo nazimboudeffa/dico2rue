@@ -35,7 +35,7 @@ session_start();
 		$row_username = $row_fetch['username'];
 		$row_def = $row_fetch['definition'];
 		$row_exemple = $row_fetch['exemple'];
-		include 'includes/mothasard.php';
+		include 'includes/mot.php';
 	}
 
 	?>
