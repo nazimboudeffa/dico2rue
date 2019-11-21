@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  jeu. 21 nov. 2019 à 03:10
+-- Généré le :  jeu. 21 nov. 2019 à 19:14
 -- Version du serveur :  10.4.8-MariaDB
 -- Version de PHP :  7.3.11
 
@@ -59,10 +59,11 @@ CREATE TABLE `mots` (
 --
 
 CREATE TABLE `votes` (
-  `id_mot` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL,
-  `up` int(11) NOT NULL,
-  `down` int(11) NOT NULL
+  `id` int(11) NOT NULL,
+  `id_mot` bigint(50) NOT NULL,
+  `id_user` bigint(50) NOT NULL,
+  `up` tinyint(1) NOT NULL,
+  `down` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -82,6 +83,12 @@ ALTER TABLE `mots`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `votes`
+--
+ALTER TABLE `votes`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT pour les tables déchargées
 --
 
@@ -95,6 +102,12 @@ ALTER TABLE `comptes`
 -- AUTO_INCREMENT pour la table `mots`
 --
 ALTER TABLE `mots`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `votes`
+--
+ALTER TABLE `votes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
