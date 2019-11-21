@@ -4,7 +4,7 @@ Dico2Rue is a clone of the original site with the same name that is actually an 
 
 ## How to install
 
-Clone the repo
+Clone the repo and install XAMPP [How To](https://github.com/nazimboudeffa/nazimboudeffa.github.io/wiki/XAMPP)
 
 Open your phpmyadmin and create a new database and call it **dico2rue** then import dico2rue.sql from install folder (will make it automatic later)
 
