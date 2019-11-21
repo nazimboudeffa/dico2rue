@@ -17,8 +17,6 @@ session_start();
 <tr><td align="center" valign="middle">
 <h1>Mots au Hasard</h1>
 <div class="word_center">
-<div class="words">
-<table>
 	<!-- ############### START WORD ############# -->
 
 	<?php
@@ -41,12 +39,14 @@ session_start();
 	?>
 
 	<!-- ############### END WORD  ############## -->
+</div>
 <tr>
 <td align="center" valign="middle">
 <a class=" buttons" href="mots-au-hasard.php">Prochain mot</a>
 </td>
 </tr>
 </table>
+<div style="clear:both"></div>
 </div> <!-- END OF CLASS LEFT COLUMN -->
 <div class="right_column">
 
