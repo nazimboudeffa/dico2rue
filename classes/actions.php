@@ -153,8 +153,8 @@ switch ($action) {
     $example = filter_var(htmlentities($_POST['example']),FILTER_SANITIZE_STRING);
     $post_time = time();
 
-    $signupsql = "INSERT INTO mots (id_mot, mot, username, definition, exemple, post_time) VALUES (:id_mot, :mot, :username, :definition, :example, :post_time)";
-    $query = $conn->prepare($signupsql);
+    $motssql = "INSERT INTO mots (id_mot, mot, username, definition, exemple, post_time) VALUES (:id_mot, :mot, :username, :definition, :example, :post_time)";
+    $query = $conn->prepare($motssql);
     $query->bindParam(':id_mot', $id_mot, PDO::PARAM_INT);
     $query->bindParam(':mot', $mot, PDO::PARAM_STR);
     $query->bindParam(':username', $_SESSION['username'], PDO::PARAM_STR);

@@ -42,20 +42,16 @@
      <br />
      <span class="st_plusone" st_url="dictionnaire/mot/1700/chiller"></span>
      <div style="position:relative; top:-2px; left:34px;">
-<span class="st_facebook" st_url="dictionnaire/mot/1700/chiller"></span>
-<span class="st_twitter"  st_url="dictionnaire/mot/1700/chiller"></span>
-<span class="st_linkedin"  st_url="dictionnaire/mot/1700/chiller"></span>
-<span class="st_delicious"  st_url="dictionnaire/mot/1700/chiller"></span>
-<span class="st_email"  st_url="dictionnaire/mot/1700/chiller"></span>
-</div>
+			<span class="st_facebook" st_url="dictionnaire/mot/1700/chiller"></span>
+			<span class="st_twitter"  st_url="dictionnaire/mot/1700/chiller"></span>
+			<span class="st_linkedin"  st_url="dictionnaire/mot/1700/chiller"></span>
+			<span class="st_delicious"  st_url="dictionnaire/mot/1700/chiller"></span>
+			<span class="st_email"  st_url="dictionnaire/mot/1700/chiller"></span>
+		 </div>
      <div style="position:relative; top:-34px; left:180px">
 		<span>Par <a href="index.html"><?php echo $row_username ?></a></span>
-		<span><img src="img/bulb.gif" alt="Pas d'accord" style="position:relative; top:3px;" /><a href="index.html" title="Pas d'accord avec cette d&eacute;fintion? Cliquez et cr&eacute;ez la votre en quelques secondes..."> Pas d'accord?</a></span>
+		<span><img src="img/bulb.gif" alt="Pas d'accord" style="position:relative; top:3px;" /><a href="rajoutez-un-mot.php" title="Pas d'accord avec cette d&eacute;fintion? Cliquez et cr&eacute;ez la votre en quelques secondes..."> Pas d'accord?</a></span>
 	</div>
-    <div style="position:relative; top:-34px;">
-    	 Utilisez-le sur votre site:
-        <input type="text" value="<a href='index.html'>Chiller</a>" style="border:1px solid #CCC; color:#999; width:300px;" />
-    </div>
 </td>
 </tr>
 <tr><td colspan="3"  class="word_link marg_left" style="font-size:12px; position:relative; top:-30px;"><a href="index.html"></a></td></tr>

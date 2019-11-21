@@ -31,37 +31,37 @@
 		</form>
 	</div>
 	<div class="clear"></div>
-<form action="dictionnaire.php" method="get">
-	<div id="alphabet">
-		<ul id="alphabet_row">
-			<li><input type="submit" name="alphabet"  value="A" /></li>
-			<li><input type="submit" name="alphabet"  value="B" /></li>
-			<li><input type="submit" name="alphabet"  value="C" /></li>
-			<li><input type="submit" name="alphabet"  value="D" /></li>
-			<li><input type="submit" name="alphabet"  value="E" /></li>
-			<li><input type="submit" name="alphabet"  value="F" /></li>
-			<li><input type="submit" name="alphabet"  value="G" /></li>
-			<li><input type="submit" name="alphabet"  value="H" /></li>
-			<li><input type="submit" name="alphabet"  value="I" /></li>
-			<li><input type="submit" name="alphabet"  value="J" /></li>
-			<li><input type="submit" name="alphabet"  value="K" /></li>
-			<li><input type="submit" name="alphabet"  value="L" /></li>
-			<li><input type="submit" name="alphabet"  value="M" /></li>
-			<li><input type="submit" name="alphabet"  value="N" /></li>
-			<li><input type="submit" name="alphabet"  value="O" /></li>
-			<li><input type="submit" name="alphabet"  value="P" /></li>
-			<li><input type="submit" name="alphabet"  value="Q" /></li>
-			<li><input type="submit" name="alphabet"  value="R" /></li>
-			<li><input type="submit" name="alphabet"  value="S" /></li>
-			<li><input type="submit" name="alphabet"  value="T" /></li>
-			<li><input type="submit" name="alphabet"  value="U" /></li>
-			<li><input type="submit" name="alphabet"  value="V" /></li>
-			<li><input type="submit" name="alphabet"  value="W" /></li>
-			<li><input type="submit" name="alphabet"  value="X" /></li>
-			<li><input type="submit" name="alphabet"  value="Y" /></li>
-			<li><input type="submit" name="alphabet"  value="Z" /></li>
-			<li><input type="submit" name="alphabet" class="alphabet_row_active" value=" " style="margin:Opx;" /></li>
-		</ul>
+	<form action="dictionnaire.php" method="get">
+		<div id="alphabet">
+			<ul id="alphabet_row">
+				<li><input type="submit" name="alphabet"  value="A" /></li>
+				<li><input type="submit" name="alphabet"  value="B" /></li>
+				<li><input type="submit" name="alphabet"  value="C" /></li>
+				<li><input type="submit" name="alphabet"  value="D" /></li>
+				<li><input type="submit" name="alphabet"  value="E" /></li>
+				<li><input type="submit" name="alphabet"  value="F" /></li>
+				<li><input type="submit" name="alphabet"  value="G" /></li>
+				<li><input type="submit" name="alphabet"  value="H" /></li>
+				<li><input type="submit" name="alphabet"  value="I" /></li>
+				<li><input type="submit" name="alphabet"  value="J" /></li>
+				<li><input type="submit" name="alphabet"  value="K" /></li>
+				<li><input type="submit" name="alphabet"  value="L" /></li>
+				<li><input type="submit" name="alphabet"  value="M" /></li>
+				<li><input type="submit" name="alphabet"  value="N" /></li>
+				<li><input type="submit" name="alphabet"  value="O" /></li>
+				<li><input type="submit" name="alphabet"  value="P" /></li>
+				<li><input type="submit" name="alphabet"  value="Q" /></li>
+				<li><input type="submit" name="alphabet"  value="R" /></li>
+				<li><input type="submit" name="alphabet"  value="S" /></li>
+				<li><input type="submit" name="alphabet"  value="T" /></li>
+				<li><input type="submit" name="alphabet"  value="U" /></li>
+				<li><input type="submit" name="alphabet"  value="V" /></li>
+				<li><input type="submit" name="alphabet"  value="W" /></li>
+				<li><input type="submit" name="alphabet"  value="X" /></li>
+				<li><input type="submit" name="alphabet"  value="Y" /></li>
+				<li><input type="submit" name="alphabet"  value="Z" /></li>
+				<li><input type="submit" name="alphabet" class="alphabet_row_active" value=" " style="margin:Opx;" /></li>
+			</ul>
+		</div>
+	</form>
 	</div>
-</form>
-</div>
