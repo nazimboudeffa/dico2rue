@@ -2,9 +2,9 @@
 <tr><td align="center">
 </td></tr>
 <tr><td align="center">
-<a href="index.html">FAQ</a> -
-<a href="index.html">Conditions d&lsquo;utilisation</a> -
-<a href="index.html">Contactez-nous</a>
+<a href="foire-aux-questions.php">FAQ</a> -
+<a href="conditions-utilisation.php">Conditions d&lsquo;utilisation</a> -
+<a href="contact.php">Contactez-nous</a>
 </td></tr>
 <tr>
 <td align="center">
