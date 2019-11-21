@@ -31,10 +31,10 @@ SET time_zone = "+00:00";
 CREATE TABLE `comptes` (
   `id` int(11) NOT NULL,
   `id_user` bigint(50) NOT NULL,
-  `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `username` varchar(255) COLLATE utf8_general_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8_general_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -45,12 +45,12 @@ CREATE TABLE `comptes` (
 CREATE TABLE `mots` (
   `id` int(11) NOT NULL,
   `id_mot` bigint(50) NOT NULL,
-  `mot` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `definition` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `exemple` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `mot` varchar(255) COLLATE utf8_general_ci NOT NULL,
+  `username` varchar(255) COLLATE utf8_general_ci NOT NULL,
+  `definition` varchar(255) COLLATE utf8_general_ci NOT NULL,
+  `exemple` varchar(255) COLLATE utf8_general_ci NOT NULL,
   `post_time` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -64,7 +64,7 @@ CREATE TABLE `votes` (
   `id_user` bigint(50) NOT NULL,
   `up` tinyint(1) NOT NULL,
   `down` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Index pour les tables déchargées
