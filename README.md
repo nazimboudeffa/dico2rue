@@ -1,4 +1,4 @@
-# Hashtag Social Network
+# Dico2Rue
 
 Dico2Rue is a clone of the original site with the same name that is actually an abondonware
 
