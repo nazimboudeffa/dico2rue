@@ -75,7 +75,7 @@ switch ($action) {
     );
     $signup_password = password_hash($signup_password_var, PASSWORD_BCRYPT, $options);
 
-    $signupsql = "INSERT INTO comptes (id, username, email, password) VALUES (:signup_id, :signup_username, :signup_email, :signup_password)";
+    $signupsql = "INSERT INTO comptes (id_user, username, email, password) VALUES (:signup_id, :signup_username, :signup_email, :signup_password)";
     $query = $conn->prepare($signupsql);
     $query->bindParam(':signup_id', $signup_id, PDO::PARAM_INT);
     $query->bindParam(':signup_username', $signup_username, PDO::PARAM_STR);
@@ -145,7 +145,41 @@ switch ($action) {
     echo $json;
 
   break;
+  case 'addWord' :
 
+    $id_mot = (rand(0,99999).time()) + time();
+    $mot= filter_var(htmlentities($_POST['word']),FILTER_SANITIZE_STRING);
+    $definition = filter_var(htmlentities($_POST['definition']),FILTER_SANITIZE_STRING);
+    $example = filter_var(htmlentities($_POST['example']),FILTER_SANITIZE_STRING);
+
+    $signupsql = "INSERT INTO mots (id_mot, mot, username, def, exemple) VALUES (:id_mot, :mot, :username, :def, :example)";
+    $query = $conn->prepare($signupsql);
+    $query->bindParam(':id_mot', $id_mot, PDO::PARAM_INT);
+    $query->bindParam(':mot', $mot, PDO::PARAM_STR);
+    $query->bindParam(':username', $_SESSION['username'], PDO::PARAM_STR);
+    $query->bindParam(':def', $definition, PDO::PARAM_STR);
+    $query->bindParam(':example', $example, PDO::PARAM_STR);
+    $query->execute();
+
+    $motsql = "SELECT * FROM mots WHERE mot= :mot";
+    $query = $conn->prepare($motsql);
+    $query->bindParam(':mot', $mot, PDO::PARAM_STR);
+    $query->execute();
+    $num = $query->rowCount();
+
+    $error = false;
+
+    if($num == 0){
+      $error = true;
+    }
+
+    $array = array(
+      'error'=>$error
+    );
+    $json = json_encode($array);
+    echo $json;
+
+  break;
 }
 
 ?>

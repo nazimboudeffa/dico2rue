@@ -4,7 +4,7 @@ $(document).ready(function(){
 		values2  = values.split('-');
 $.ajax({
 	type: 'POST',
-	url: 'http://www.dico2rue.com/forms/vote.php',
+	url: 'forms/vote.php',
 	data: { 'fun' : values2[0] , 'idW' : values2[1] },
 	dataType : 'json',
 	beforeSend:function(){
@@ -63,12 +63,12 @@ $.ajax({
 	// If there is an error auto fadeout
 	$('#alphabet_row input').click(function(){
 		var value = $(this).val();
-		window.location.href = "http://www.dico2rue.com/dictionnaire/alphabet/"+value+"/";
+		window.location.href = "dictionnaire/alphabet/"+value+"/";
 		return false;
 	});
 	$('#searchForm').submit(function(){
-		//var value = escape($('#mainsearch').val()); alert("http://www.dico2rue.com/dictionnaire/recherche/"+value+"/");
-		//window.location.href = "http://www.dico2rue.com/dictionnaire/recherche/"+value+"/";
+		//var value = escape($('#mainsearch').val()); alert("dictionnaire/recherche/"+value+"/");
+		//window.location.href = "dictionnaire/recherche/"+value+"/";
 		//return false;
 	});
 });
@@ -91,7 +91,7 @@ function AddWord(word,definition,example,url_image){
 		//if( $("#tags").validationEngine('validateField', "#tags") === true ){ return false; };
 $.ajax({
 	type: 'POST',
-	url: 'http://www.dico2rue.com/classes/actions.php',
+	url: 'classes/actions.php',
 	data: { 'action' : 'addWord' ,  'word' : word , 'definition' : definition  , 'example' : example  , 'url_image' : url_image},
 	dataType : 'json',
 	beforeSend:function(){
@@ -110,7 +110,8 @@ $.ajax({
 		}
 	},
 	error:function(data){
-		//alert();
+		console.log(data);
+		alert("Il y a une erreur quelque part");
 	}
 });
 }  // END OF ADD WORD
