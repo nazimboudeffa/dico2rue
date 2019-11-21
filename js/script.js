@@ -103,6 +103,7 @@ $.ajax({
 		if( data.error === false){
 			$('#update').html("Votre mot a été rajouté.");
 			//$('#success').fadeIn('fast');
+			window.location.href = "index.php";
 		}
 		if(data.error === true){
 			$('#update').html("Il y a eu une erreur, priez ressayer");
@@ -110,7 +111,6 @@ $.ajax({
 		}
 	},
 	error:function(data){
-		console.log(data);
 		alert("Il y a une erreur quelque part");
 	}
 });

@@ -151,14 +151,16 @@ switch ($action) {
     $mot= filter_var(htmlentities($_POST['word']),FILTER_SANITIZE_STRING);
     $definition = filter_var(htmlentities($_POST['definition']),FILTER_SANITIZE_STRING);
     $example = filter_var(htmlentities($_POST['example']),FILTER_SANITIZE_STRING);
+    $post_time = time();
 
-    $signupsql = "INSERT INTO mots (id_mot, mot, username, definition, exemple) VALUES (:id_mot, :mot, :username, :definition, :example)";
+    $signupsql = "INSERT INTO mots (id_mot, mot, username, definition, exemple, post_time) VALUES (:id_mot, :mot, :username, :definition, :example, :post_time)";
     $query = $conn->prepare($signupsql);
     $query->bindParam(':id_mot', $id_mot, PDO::PARAM_INT);
     $query->bindParam(':mot', $mot, PDO::PARAM_STR);
     $query->bindParam(':username', $_SESSION['username'], PDO::PARAM_STR);
     $query->bindParam(':definition', $definition, PDO::PARAM_STR);
     $query->bindParam(':example', $example, PDO::PARAM_STR);
+    $query->bindParam(':post_time', $post_time, PDO::PARAM_INT);
     $query->execute();
 
     $motsql = "SELECT * FROM mots WHERE mot= :mot";

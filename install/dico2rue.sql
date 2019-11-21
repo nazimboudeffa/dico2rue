@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  jeu. 21 nov. 2019 à 03:02
+-- Généré le :  jeu. 21 nov. 2019 à 03:10
 -- Version du serveur :  10.4.8-MariaDB
 -- Version de PHP :  7.3.11
 
@@ -48,7 +48,8 @@ CREATE TABLE `mots` (
   `mot` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `definition` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `exemple` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+  `exemple` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `post_time` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------

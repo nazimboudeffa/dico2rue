@@ -20,7 +20,7 @@ session_start();
 
 include 'config/connect.php';
 
-$motsql = "SELECT * FROM mots";
+$motsql = "SELECT * FROM mots ORDER BY post_time DESC";
 $query = $conn->prepare($motsql);
 $query->execute();
 $num = $query->rowCount();
@@ -28,6 +28,7 @@ $num = $query->rowCount();
 while($row_fetch = $query->fetch(PDO::FETCH_ASSOC)){
 	$row_id_mot = $row_fetch['id_mot'];
 	$row_mot = $row_fetch['mot'];
+	$row_username = $row_fetch['username'];
 	$row_def = $row_fetch['definition'];
 	$row_exemple = $row_fetch['exemple'];
 	include 'includes/mot.php';
