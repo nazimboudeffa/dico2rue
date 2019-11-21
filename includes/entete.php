@@ -21,7 +21,7 @@
 		<a href="index.php"  class=""  >Mots du jour</a>
 		<a href="mots-au-hasard.php"  class=""  >Mots au Hasard</a>
 		<a href="dictionnaire.php"  class=""  >Dictionnaire</a>
-		<a href="validez-les-nouveautes.php"  class=""  >Validez les nouveautés</a>
+		<!-- <a href="validez-les-nouveautes.php"  class=""  >Validez les nouveautés</a> -->
 		<a href="rajoutez-un-mot.php"  class="menubar_active"  >Rajouter un mot</a>
 	</div>
 	<div class="right" id="searchbar">

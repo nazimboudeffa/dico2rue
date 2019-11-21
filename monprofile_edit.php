@@ -33,6 +33,14 @@ session_start();
 <tr>
 	<td colspan="2"><h1>Modifier mes infos</h1></td>
 </tr>
+
+<tr>
+	<td valign="top" align="left"><label>Twitter</label></td>
+	<td>@<input type="text" name="twitter" id="twitter" class="" value="" /></td>
+</tr>
+
+<!--
+
 <tr>
 	<td valign="top" align="left"><label>Age</label></td>
 	<td><input type="text" id="age" name="age"  class="validate[custom[integer],maxSize[3]]" value="0" /></td>
@@ -46,6 +54,8 @@ session_start();
 	<td valign="top" align="left"><label>Mon site web</label></td>
 	<td><input type="text" name="website" id="website" class="validate[custom[url],maxSize[60]]" value="" /></td>
 </tr>
+
+-->
 <tr>
 	<td colspan="2"><h1>Modifier mot de passe</h1></td>
 </tr>

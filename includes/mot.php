@@ -17,7 +17,7 @@
 	<br /> bof
 </td>
 <td class="word marg_left">
-	[ <a href="index.html"><?php echo $row_mot ?></a> ]
+	[ <a href="dictionnaire.php?id_mot=<?php echo $row_id_mot ?>"><?php echo $row_mot ?></a> ]
 </td>
 </tr>
 <tr>
@@ -49,7 +49,7 @@
 			<span class="st_email"  st_url="dictionnaire/mot/1700/chiller"></span>
 		 </div>
      <div style="position:relative; top:-34px; left:180px">
-		<span>Par <a href="index.html"><?php echo $row_username ?></a></span>
+		<span>Par <?php echo $row_username ?></span>
 		<span><img src="img/bulb.gif" alt="Pas d'accord" style="position:relative; top:3px;" /><a href="rajoutez-un-mot.php" title="Pas d'accord avec cette d&eacute;fintion? Cliquez et cr&eacute;ez la votre en quelques secondes..."> Pas d'accord?</a></span>
 	</div>
 </td>

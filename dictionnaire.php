@@ -19,6 +19,35 @@ session_start();
 
 	include 'config/connect.php';
 
+if (isset($_GET['alphabet'])){
+	$motsql = "SELECT * FROM mots WHERE mot LIKE '".$_GET['alphabet']."%' ORDER BY mot ASC";
+	$query = $conn->prepare($motsql);
+	$query->execute();
+	$num = $query->rowCount();
+
+	while($row_fetch = $query->fetch(PDO::FETCH_ASSOC)){
+		$row_id_mot = $row_fetch['id_mot'];
+		$row_mot = $row_fetch['mot'];
+		$row_username = $row_fetch['username'];
+		$row_def = $row_fetch['definition'];
+		$row_exemple = $row_fetch['exemple'];
+		include 'includes/mot.php';
+	}
+} else if (isset($_GET['id_mot'])){
+	$motsql = "SELECT * FROM mots WHERE id_mot=".$_GET['id_mot']."";
+	$query = $conn->prepare($motsql);
+	$query->execute();
+	$num = $query->rowCount();
+
+	while($row_fetch = $query->fetch(PDO::FETCH_ASSOC)){
+		$row_id_mot = $row_fetch['id_mot'];
+		$row_mot = $row_fetch['mot'];
+		$row_username = $row_fetch['username'];
+		$row_def = $row_fetch['definition'];
+		$row_exemple = $row_fetch['exemple'];
+		include 'includes/mot.php';
+	}
+} else {
 	$motsql = "SELECT * FROM mots ORDER BY mot ASC";
 	$query = $conn->prepare($motsql);
 	$query->execute();
@@ -32,6 +61,7 @@ session_start();
 		$row_exemple = $row_fetch['exemple'];
 		include 'includes/mot.php';
 	}
+}
 
 	?>
 
