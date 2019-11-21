@@ -152,12 +152,12 @@ switch ($action) {
     $definition = filter_var(htmlentities($_POST['definition']),FILTER_SANITIZE_STRING);
     $example = filter_var(htmlentities($_POST['example']),FILTER_SANITIZE_STRING);
 
-    $signupsql = "INSERT INTO mots (id_mot, mot, username, def, exemple) VALUES (:id_mot, :mot, :username, :def, :example)";
+    $signupsql = "INSERT INTO mots (id_mot, mot, username, definition, exemple) VALUES (:id_mot, :mot, :username, :definition, :example)";
     $query = $conn->prepare($signupsql);
     $query->bindParam(':id_mot', $id_mot, PDO::PARAM_INT);
     $query->bindParam(':mot', $mot, PDO::PARAM_STR);
     $query->bindParam(':username', $_SESSION['username'], PDO::PARAM_STR);
-    $query->bindParam(':def', $definition, PDO::PARAM_STR);
+    $query->bindParam(':definition', $definition, PDO::PARAM_STR);
     $query->bindParam(':example', $example, PDO::PARAM_STR);
     $query->execute();
 

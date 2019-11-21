@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  jeu. 21 nov. 2019 à 02:29
+-- Généré le :  jeu. 21 nov. 2019 à 03:02
 -- Version du serveur :  10.4.8-MariaDB
 -- Version de PHP :  7.3.11
 
@@ -47,7 +47,7 @@ CREATE TABLE `mots` (
   `id_mot` bigint(50) NOT NULL,
   `mot` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `def` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `definition` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `exemple` varchar(255) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -59,6 +59,7 @@ CREATE TABLE `mots` (
 
 CREATE TABLE `votes` (
   `id_mot` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
   `up` int(11) NOT NULL,
   `down` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

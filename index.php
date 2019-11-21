@@ -15,18 +15,45 @@ session_start();
 <div class="left_column">
 
 <!-- ############### START WORD ############# -->
- <?php include 'includes/mot.php' ?>
+
+<?php
+
+include 'config/connect.php';
+
+$motsql = "SELECT * FROM mots";
+$query = $conn->prepare($motsql);
+$query->execute();
+$num = $query->rowCount();
+
+while($row_fetch = $query->fetch(PDO::FETCH_ASSOC)){
+	$row_id_mot = $row_fetch['id_mot'];
+	$row_mot = $row_fetch['mot'];
+	$row_def = $row_fetch['definition'];
+	$row_exemple = $row_fetch['exemple'];
+	include 'includes/mot.php';
+}
+
+?>
+
 <!-- ############### END WORD  ############## -->
 
-<div style="clear:both"></div><table width='100%' border='0'><tr align='center'><td align='center'><div id="pagination">
-<span class="current">1</span>
-<a href="index.html">2</a>
-<a href="index.html">3</a>
-<a href="index.html">4</a>
-<a href="index.html">5</a>
-<span> ... </span><a href="index.html">17</a>
-<a id='next' href="index.html"></a>
-</div></td></tr></table>
+<div style="clear:both"></div>
+
+<table width='100%' border='0'>
+	<tr align='center'>
+		<td align='center'><div id="pagination">
+			<span class="current">1</span>
+			<a href="index.html">2</a>
+			<a href="index.html">3</a>
+			<a href="index.html">4</a>
+			<a href="index.html">5</a>
+			<span> ... </span><a href="index.html">17</a>
+			<a id='next' href="index.html"></a>
+			</div>
+			</td>
+	</tr>
+</table>
+
 </div> <!-- END OF CLASS LEFT COLUMN -->
 <div class="right_column">
 
