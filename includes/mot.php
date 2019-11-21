@@ -39,16 +39,12 @@
 	<div class="facebook_count">
 		<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.dico2rue.com%2Fdictionnaire%2Fmot%2F1700%2Fchiller&amp;layout=button_count&amp;show_faces=false&amp;width=90&amp;action=like&amp;font=arial&amp;colorscheme=light&amp;height=21" scrolling="no"  style="border:none; overflow:hidden; width:90px; height:21px;" frameborder="0" allowTransparency="true"></iframe>
 	</div>-->
-     <br />
-     <span class="st_plusone" st_url="dictionnaire/mot/1700/chiller"></span>
-     <div style="position:relative; top:-2px; left:34px;">
-			<span class="st_facebook" st_url="dictionnaire/mot/1700/chiller"></span>
-			<span class="st_twitter"  st_url="dictionnaire/mot/1700/chiller"></span>
-			<span class="st_linkedin"  st_url="dictionnaire/mot/1700/chiller"></span>
-			<span class="st_delicious"  st_url="dictionnaire/mot/1700/chiller"></span>
-			<span class="st_email"  st_url="dictionnaire/mot/1700/chiller"></span>
-		 </div>
-     <div style="position:relative; top:-34px; left:180px">
+  <br />
+  <div style="position:relative; top:-2px; left:34px;">
+		<span data-sharer="facebook" data-hashtag="dico2rue" data-url="#"><i class="fa fa-2x fa-facebook-square" style="color:#3c5a99"></i></span>
+		<span data-sharer="twitter" data-title="Je kiff ce mot!" data-hashtags="dico2rue" data-url="#"><i class="fa fa-2x fa-twitter-square" style="color:#00acee"></i></span>
+	</div>
+  <div style="position:relative; top:-34px; left:180px">
 		<span>Par <?php echo $row_username ?></span>
 		<span><img src="img/bulb.gif" alt="Pas d'accord" style="position:relative; top:3px;" /><a href="rajoutez-un-mot.php" title="Pas d'accord avec cette d&eacute;fintion? Cliquez et cr&eacute;ez la votre en quelques secondes..."> Pas d'accord?</a></span>
 	</div>

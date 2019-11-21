@@ -28,6 +28,8 @@
         <link rel="stylesheet" type="text/css" href="css/ifie.css" />
 <![endif]-->
 <!--FOR SHARE THIS-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sharer.js@latest/sharer.min.js"></script>
 <script type="text/javascript">
 var switchTo5x=true;
 </script>
