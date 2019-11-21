@@ -10,12 +10,21 @@ $result->bindParam(':id_mot', $row_id_mot, PDO::PARAM_INT);
 $result->execute();
 $number_of_rows_for = $result->fetchColumn();
 
-$vagainstsql = "SELECT COUNT(*) FROM votes WHERE id_mot=:id_mot AND down=:down";
+$vagainstsql = "SELECT COUNT(*) FROM votes WHERE id_mot=:id_mot AND down=1";
 $result = $conn->prepare($vagainstsql);
 $result->bindParam(':id_mot', $row_id_mot, PDO::PARAM_INT);
-$result->bindParam(':down', $t, PDO::PARAM_INT);
+//$result->bindParam(':down', $t, PDO::PARAM_INT);
 $result->execute();
 $number_of_rows_against = $result->fetchColumn();
+
+//Fetching user to add a link to his account
+$usersql = "SELECT * FROM comptes WHERE username=:username";
+$queryuser = $conn->prepare($usersql);
+$queryuser->bindParam(':username', $row_username, PDO::PARAM_STR);
+$queryuser->execute();
+
+$row_fetch_user = $queryuser->fetch(PDO::FETCH_ASSOC);
+$row_id_user = $row_fetch_user['id_user'];
 
 ?>
 
@@ -65,7 +74,7 @@ $number_of_rows_against = $result->fetchColumn();
 		<span data-sharer="twitter" data-title="Je kiff ce mot!" data-hashtags="dico2rue" data-url="#"><i class="fa fa-2x fa-twitter-square" style="color:#00acee"></i></span>
 	</div>
   <div style="position:relative; top:-34px; left:180px">
-		<span>Par <?php echo $row_username ?></span>
+		<span>Par <a href="utilisateur.php?id_user=<?php echo $row_id_user ?>"><?php echo $row_username ?></a></span>
 		<span><img src="img/bulb.gif" alt="Pas d'accord" style="position:relative; top:3px;" /><a href="rajoutez-un-mot.php" title="Pas d'accord avec cette d&eacute;fintion? Cliquez et cr&eacute;ez la votre en quelques secondes..."> Pas d'accord?</a></span>
 	</div>
 </td>

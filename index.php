@@ -20,7 +20,7 @@ session_start();
 
 include 'config/connect.php';
 
-$motsql = "SELECT * FROM mots ORDER BY post_time DESC";
+$motsql = "SELECT * FROM mots ORDER BY post_time DESC LIMIT 5";
 $query = $conn->prepare($motsql);
 $query->execute();
 $num = $query->rowCount();
@@ -40,20 +40,6 @@ while($row_fetch = $query->fetch(PDO::FETCH_ASSOC)){
 
 <div style="clear:both"></div>
 
-<table width='100%' border='0'>
-	<tr align='center'>
-		<td align='center'><div id="pagination">
-			<span class="current">1</span>
-			<a href="index.html">2</a>
-			<a href="index.html">3</a>
-			<a href="index.html">4</a>
-			<a href="index.html">5</a>
-			<span> ... </span><a href="index.html">17</a>
-			<a id='next' href="index.html"></a>
-			</div>
-			</td>
-	</tr>
-</table>
 
 </div> <!-- END OF CLASS LEFT COLUMN -->
 <div class="right_column">
