@@ -1,5 +1,5 @@
 <?php
 
-include '../includes/facebook.php';
+include 'includes/facebook.php';
 
 ?>
