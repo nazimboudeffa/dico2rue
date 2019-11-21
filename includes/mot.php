@@ -71,7 +71,7 @@ $row_id_user = $row_fetch_user['id_user'];
   <br />
   <div style="position:relative; top:-2px; left:34px;">
 		<span data-sharer="facebook" data-hashtag="dico2rue" data-url="#"><i class="fa fa-2x fa-facebook-square" style="color:#3c5a99"></i></span>
-		<span data-sharer="twitter" data-title="Je kiff ce mot!" data-hashtags="dico2rue" data-url="#"><i class="fa fa-2x fa-twitter-square" style="color:#00acee"></i></span>
+		<span data-sharer="twitter" data-title="Je kiffe ce mot!" data-hashtags="dico2rue" data-url="#"><i class="fa fa-2x fa-twitter-square" style="color:#00acee"></i></span>
 	</div>
   <div style="position:relative; top:-34px; left:180px">
 		<span>Par <a href="utilisateur.php?id_user=<?php echo $row_id_user ?>"><?php echo $row_username ?></a></span>
