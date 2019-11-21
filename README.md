@@ -12,7 +12,7 @@ Edit connect.php file in config folder and set the username and password of the 
 
 ## Usage
 
-When you sign up the first time into your social network, you will be the main admin of website and you can add more admins from the dashboard
+When you sign up the first time, you will be the main admin of website and you can add more admins from the dashboard
 
 ## About
 
