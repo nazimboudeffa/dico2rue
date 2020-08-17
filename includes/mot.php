@@ -62,6 +62,12 @@ $row_id_user = $row_fetch_user['id_user'];
 	</p>
 </td>
 </tr>
+<tr>
+<td colspan="3" class="example marg_left">
+	<img src="<?php echo $row_gif ?>"
+	</img>
+</td>
+</tr>
 
 <td colspan="3" class="word_link marg_left" valign="bottom">
 	<!--<div class="twitter_count">
