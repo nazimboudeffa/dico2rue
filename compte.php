@@ -43,6 +43,7 @@ include 'includes/pied.php'
 ?>
 
 </div> <!-- END OF ID WRAPPER -->
+
 <?php
 
 include 'includes/ganalytics.php'

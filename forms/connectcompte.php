@@ -172,6 +172,11 @@ $('#loginForm').submit(function(){
     });
 		return false;
 	});
+
+	$('#twitter-button').click(function() {
+			console.log("clicked");
+			$('#update').html("Connection avec Twitter bientôt disponible");$('#update').fadeIn('fast');updatefadeout(); return false;
+	})
 });
 </script>
 <style>
@@ -190,9 +195,12 @@ $('#loginForm').submit(function(){
 	<label>Mot de passe :</label>
 	<input type="password" name="lpassword" id="lpassword" class="validate[minSize[6],maxSize[15]]" tabindex="7" />
 	<button type="submit" class="buttons right" name="function" value="login" id="login" tabindex="8">Connexion</button>
+	<a href="#" id="forgottenbutton">Mot de passe oublié?</a>
+	<a id="twitter-button" class="btn btn-block btn-social btn-twitter">
+		<i class="fa fa-twitter"></i> Se connecter avec Twitter
+	</a>
 </form>
 	<div class="clear"></div>
-	<a href="#" id="forgottenbutton">Mot de passe oublié?</a>
 	<div class="hide" id="forgottencontent">
 	<br>
 	<label>Votre email :</label>
