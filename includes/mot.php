@@ -63,8 +63,8 @@ $row_id_user = $row_fetch_user['id_user'];
 </td>
 </tr>
 <tr>
-<td colspan="3" class="example marg_left">
-	<img src="<?php echo $row_gif ?>"
+<td colspan="3" class="gif marg_left">
+	<img src="<?php if ($row_gif != '') {echo $row_gif;} else {echo 'https://media.giphy.com/media/IzVquL965ib4s/giphy.gif';} ?>">
 	</img>
 </td>
 </tr>
