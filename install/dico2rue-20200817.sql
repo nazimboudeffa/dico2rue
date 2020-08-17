@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost:3306
--- Généré le :  Lun 17 Août 2020 à 19:07
+-- Généré le :  Lun 17 Août 2020 à 22:40
 -- Version du serveur :  5.7.31-0ubuntu0.18.04.1
 -- Version de PHP :  7.2.24-0ubuntu0.18.04.6
 
@@ -57,6 +57,7 @@ CREATE TABLE `mots` (
   `username` varchar(255) NOT NULL,
   `definition` varchar(255) NOT NULL,
   `exemple` varchar(255) NOT NULL,
+  `gif` varchar(255) NOT NULL,
   `post_time` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -64,13 +65,13 @@ CREATE TABLE `mots` (
 -- Contenu de la table `mots`
 --
 
-INSERT INTO `mots` (`id`, `id_mot`, `mot`, `username`, `definition`, `exemple`, `post_time`) VALUES
-(1, 678703194467602, 'Kaira', 'unicorn', 'Racaille en verlan', 'T pas un kaira alors arr&ecirc;te de faire ton thug', 1597233801),
-(2, 507073194666598, 'Bourzouf', 'unicorn', 'Argent fictif', 'Le pelo il les a tellement grosses qu&#39;il a moulte bourzouf', 1597333299),
-(3, 947883194674986, 'Crevard', 'unicorn', 'Quelqu&#39;un qui n&#39;a pas peur de la loi', 'T&#39;as vu t&#39;est un d&eacute;gonfl&eacute; paske moi mon nom c&#39;est Cr3varD', 1597337493),
-(4, 787663195181786, 'FDP', 'shadowofthedusk', 'En argot internet qui veut dire Fils De Pute', 'Le kaira c&#39;est un vrai FDP', 1597590893),
-(5, 640353195351196, 'On s&#39;en bat les couilles', 'tetedecul', 'Autre fois se disait : &quot;j&#39;en ai rien &agrave; foutre&quot;', 'On s&#39;en bat les couilles de la police', 1597675598),
-(6, 828373195351676, 'On s&#39;en balek', 'tetedebite', 'Se m&eacute;fier', 'Les cond&eacute;s on s&#39;en balek', 1597675838);
+INSERT INTO `mots` (`id`, `id_mot`, `mot`, `username`, `definition`, `exemple`, `gif`, `post_time`) VALUES
+(1, 678703194467602, 'Kaira', 'unicorn', 'Racaille en verlan', 'T pas un kaira alors arr&ecirc;te de faire ton thug', '', 1597233801),
+(2, 507073194666598, 'Bourzouf', 'unicorn', 'Argent fictif', 'Le pelo il les a tellement grosses qu&#39;il a moulte bourzouf', '', 1597333299),
+(3, 947883194674986, 'Crevard', 'unicorn', 'Quelqu&#39;un qui n&#39;a pas peur de la loi', 'T&#39;as vu t&#39;est un d&eacute;gonfl&eacute; paske moi mon nom c&#39;est Cr3varD', '', 1597337493),
+(4, 787663195181786, 'FDP', 'shadowofthedusk', 'En argot internet qui veut dire Fils De Pute', 'Le kaira c&#39;est un vrai FDP', '', 1597590893),
+(5, 640353195351196, 'On s&#39;en bat les couilles', 'tetedecul', 'Autre fois se disait : &quot;j&#39;en ai rien &agrave; foutre&quot;', 'On s&#39;en bat les couilles de la police', 'https://media.giphy.com/media/jV0eHF0epp1I9OBB7Z/giphy.gif', 1597675598),
+(6, 828373195351676, 'On s&#39;en balek', 'tetedebite', 'Se m&eacute;fier', 'Les cond&eacute;s on s&#39;en balek', '', 1597675838);
 
 -- --------------------------------------------------------
 
