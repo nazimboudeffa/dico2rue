@@ -64,9 +64,22 @@ $row_id_user = $row_fetch_user['id_user'];
 </td>
 </tr>
 <tr>
+	<style media="screen">
+		.wrapper {
+		height: 300px; /* Suggestive number; pick your own height as desired */
+		width: 300px; /* Pick an appropriate width as desired, unless you already use a grid, in that case use 100% */
+		}
+		.gif {
+			height: 100%;
+			left: 0;
+			top: 0;
+			width: auto;
+		}
+	</style>
 <td colspan="3" class="gif marg_left">
-	<img src="<?php if ($row_gif != '') {echo $row_gif;} else {echo 'https://media.giphy.com/media/IzVquL965ib4s/giphy.gif';} ?>">
-	</img>
+	<div class="wrapper">
+		<img class="gif" src="<?php if ($row_gif != '') {echo $row_gif;} else {echo 'https://media.giphy.com/media/IzVquL965ib4s/giphy.gif';} ?>"></img>
+	</div>
 </td>
 </tr>
 
@@ -82,7 +95,7 @@ $row_id_user = $row_fetch_user['id_user'];
 		<span data-sharer="facebook" data-hashtag="dico2rue" data-url="<?php echo $global['webSiteRootURL'] ?>dictionnaire.php?id_mot=<?php echo $row_id_mot ?>"><i class="fa fa-2x fa-facebook-square" style="color:#3c5a99"></i></span>
 		<span data-sharer="twitter" data-title="Je kiffe ce mot! <?php echo $row_mot ?>" data-hashtags="dico2rue" data-url="<?php echo $global['webSiteRootURL'] ?>dictionnaire.php?id_mot=<?php echo $row_id_mot ?>"><i class="fa fa-2x fa-twitter-square" style="color:#00acee"></i></span>
 	</div>
-  <div style="position:relative; top:-34px; left:180px">
+  <div style="position:relative; top:-20px; left:120px">
 		<span>Par <a href="utilisateur.php?id_user=<?php echo $row_id_user ?>"><?php echo $row_username ?></a></span>
 		<span><img src="img/bulb.gif" alt="Pas d'accord" style="position:relative; top:3px;" /><a href="rajoutez-un-mot.php" title="Pas d'accord avec cette d&eacute;fintion? Cliquez et cr&eacute;ez la votre en quelques secondes..."> Pas d'accord?</a></span>
 	</div>

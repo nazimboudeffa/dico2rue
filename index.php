@@ -31,6 +31,7 @@ while($row_fetch = $query->fetch(PDO::FETCH_ASSOC)){
 	$row_username = $row_fetch['username'];
 	$row_def = $row_fetch['definition'];
 	$row_exemple = $row_fetch['exemple'];
+	$row_gif = $row_fetch['gif'];
 	include 'includes/mot.php';
 }
 
