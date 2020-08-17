@@ -1,6 +1,7 @@
 <?php
 
 include 'config/connect.php';
+include 'config/config.php';
 
 $t = 1;
 $f = 0;
