@@ -31,6 +31,16 @@ $(document).ready(function(){
 	<td><textarea name="example" id="example" class="validate[required,minSize[5],maxSize[1000]]"></textarea></td>
 </tr>
 
+<tr>
+	<td valign="top" align="left"><label>URL de l'image :</label></td>
+	<td><input type="text" name="url_image" id="url_image" value=""></td>
+</tr>
+
+<tr>
+	<td></td>
+	<td><p class="moveup">Merci d’entrer l'URL de l'image que vous souhaitez ajouter. Pour cela, trouvez une image sur le site GIPHY, cliquez pour copier l'URL.</p>  </td>
+</tr>
+
 <!--<tr>
 	<td valign="top" align="left"><label>Synonymes :</label></td>
 	<td><input type="text" name="tags" class="validate[custom[onlyLetterSp],minSize[3],maxSize[200]]" value="" /></td>

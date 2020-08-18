@@ -144,19 +144,26 @@ switch ($action) {
   break;
   case 'addWord' :
 
+    $error = false;
+
+    $pattern = '~https?://(?|media\.giphy\.com/media/([^ /]+)/giphy\.gif|i\.giphy\.com/([^ /]+)\.gif|giphy\.com/gifs/(?:.*-)?([^ /]+))~i';
+    if (!preg_match($pattern, $_POST['url_image'], $matches)) { $error = true; };
+
     $id_mot = (rand(0,99999).time()) + time();
     $mot= filter_var(htmlentities($_POST['word']),FILTER_SANITIZE_STRING);
     $definition = filter_var(htmlentities($_POST['definition']),FILTER_SANITIZE_STRING);
     $example = filter_var(htmlentities($_POST['example']),FILTER_SANITIZE_STRING);
+    $gif = $matches(0);
     $post_time = time();
 
-    $motssql = "INSERT INTO mots (id_mot, mot, username, definition, exemple, post_time) VALUES (:id_mot, :mot, :username, :definition, :example, :post_time)";
+    $motssql = "INSERT INTO mots (id_mot, mot, username, definition, exemple, gif, post_time) VALUES (:id_mot, :mot, :username, :definition, :example, :gif, :post_time)";
     $query = $conn->prepare($motssql);
     $query->bindParam(':id_mot', $id_mot, PDO::PARAM_INT);
     $query->bindParam(':mot', $mot, PDO::PARAM_STR);
     $query->bindParam(':username', $_SESSION['username'], PDO::PARAM_STR);
     $query->bindParam(':definition', $definition, PDO::PARAM_STR);
     $query->bindParam(':example', $example, PDO::PARAM_STR);
+    $query->bindParam(':gif', $gif, PDO::PARAM_STR);
     $query->bindParam(':post_time', $post_time, PDO::PARAM_INT);
     $query->execute();
 
@@ -165,8 +172,6 @@ switch ($action) {
     $query->bindParam(':mot', $mot, PDO::PARAM_STR);
     $query->execute();
     $num = $query->rowCount();
-
-    $error = false;
 
     if($num == 0){
       $error = true;

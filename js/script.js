@@ -115,6 +115,7 @@ function AddWord(word,definition,example,url_image){
 				}
 			},
 			error:function(data){
+				console.log(data);
 				alert("Il y a une erreur quelque part");
 			}
 		});
