@@ -78,7 +78,7 @@ $row_id_user = $row_fetch_user['id_user'];
 	</style>
 <td colspan="3" class="gif marg_left">
 	<div class="wrapper">
-		<img class="gif" src="<?php if ($row_gif != '') {echo $row_gif;} else {echo 'https://media.giphy.com/media/IzVquL965ib4s/giphy.gif';} ?>"></img>
+		<img class="gif" src="<?php if ($row_gif != '') {?>https://media.giphy.com/media/<?php echo $row_gif ?>/giphy.gif<?php ;} else {echo 'https://media.giphy.com/media/IzVquL965ib4s/giphy.gif';} ?>"></img>
 	</div>
 </td>
 </tr>

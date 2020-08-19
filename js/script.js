@@ -92,6 +92,7 @@ function AddWord(word,definition,example,url_image){
 		if( $("#word").validationEngine('validateField', "#word") === true ){ return false; };
 		if( $("#definition").validationEngine('validateField', "#definition") === true ){ return false; };
 		if( $("#example").validationEngine('validateField', "#example") === true ){ return false; };
+		if( !url_image.match('^https?://(?:[a-z0-9\-]+\.)+[a-z]{2,6}(?:/[^/#?]+)+\.(?:jpg|gif|png)$') ){  $('#update').html("L'image n'est pas une URL GIPHY");$('#update').fadeIn('fast');updatefadeout(); return false; } ;
 		//if( $("#tags").validationEngine('validateField', "#tags") === true ){ return false; };
 		$.ajax({
 			type: 'POST',

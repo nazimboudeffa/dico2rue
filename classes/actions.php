@@ -153,7 +153,7 @@ switch ($action) {
     $mot= filter_var(htmlentities($_POST['word']),FILTER_SANITIZE_STRING);
     $definition = filter_var(htmlentities($_POST['definition']),FILTER_SANITIZE_STRING);
     $example = filter_var(htmlentities($_POST['example']),FILTER_SANITIZE_STRING);
-    $gif = $matches(0);
+    $gif = $matches[1];
     $post_time = time();
 
     $motssql = "INSERT INTO mots (id_mot, mot, username, definition, exemple, gif, post_time) VALUES (:id_mot, :mot, :username, :definition, :example, :gif, :post_time)";
