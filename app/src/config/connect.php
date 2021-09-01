@@ -1,6 +1,6 @@
 <?php
 
-$servername = "localhost";
+$servername = "localhost"; //change it by db if you use docker compose
 $username = "root";
 $password = "";
 $dbname = "dico2rue";
