@@ -33,6 +33,7 @@ session_start();
 <p>Je sais pas si il fonctionne encore du coup j'ai juste partagé quelques liens avec des hashtag pour ne pas déranger les créateurs originaux</p>
 </br>
 <p>Le site étant un abondonware n'hésitez pas à utiliser le hashtag #dico2rue  sur Twitter ou Facebook pour faire des suggestions si j'en vois je vous ferai signe</p>
+<p>J'ai mis le code à disposition sur <a href="https://github.com/nazimboudeffa/dico2rue">https://github.com/nazimboudeffa/dico2rue</a></p>
 </div>
 
 
